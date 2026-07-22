@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ιδιαίτερα Μαθήματα ΑΟΘ — Πανελλαδικές Εξετάσεις</title>
+<meta name="description" content="Ιδιαίτερα μαθήματα Αρχών Οικονομικής Θεωρίας (ΑΟΘ) για Γ' Λυκείου & ΕΠΑΛ. Δια ζώσης και online, με προσωπικό πλάνο, διαγωνίσματα, interactive διαγράμματα και περιοχή μαθητών.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&family=Commissioner:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14232E;--ink-soft:#3D5361;
+  --paper:#E7EBEC;--paper-2:#DDE3E4;--card:#FBFCFC;
+  --board:#0F6B5C;--board-dark:#0A4A40;--board-tint:#DCE8E5;
+  --amber:#FFC53D;--line:#C7D1CF;
+  --radius:14px;--shadow:0 10px 30px rgba(20,35,46,.10);
+  --font-display:'Literata',Georgia,serif;--font-body:'Commissioner',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:16.5px}
+img,svg{display:block;max-width:100%}
+a{color:var(--board);text-decoration:none}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
+header{position:sticky;top:0;z-index:50;background:rgba(231,235,236,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:14px 20px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--ink)}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--board);box-shadow:0 0 0 4px var(--board-tint)}
+.nav-links{display:flex;gap:22px;margin-left:auto;align-items:center}
+.nav-links a{color:var(--ink-soft);font-weight:500;font-size:.95rem}
+.nav-links a:hover{color:var(--board)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:999px;padding:11px 22px;border:2px solid transparent;cursor:pointer;font-size:.95rem;font-family:var(--font-body);transition:transform .15s ease,background .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--board);color:#fff}.btn-primary:hover{background:var(--board-dark)}
+.btn-ghost{border-color:var(--board);color:var(--board);background:transparent}.btn-ghost:hover{background:var(--board-tint)}
+.menu-toggle{display:none;margin-left:auto;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+.hero{max-width:1120px;margin:0 auto;padding:64px 20px 40px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.eyebrow{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--board);background:var(--board-tint);display:inline-block;padding:6px 12px;border-radius:6px;margin-bottom:18px}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.12;letter-spacing:-.01em}
+h1 .hl{background:linear-gradient(transparent 62%,var(--amber) 62%)}
+.hero p.lead{margin:20px 0 28px;font-size:1.12rem;color:var(--ink-soft);max-width:34em}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-note{margin-top:22px;font-family:var(--font-mono);font-size:.82rem;color:var(--ink-soft)}
+.diagram-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;position:relative;background-image:linear-gradient(var(--board-tint) 1px,transparent 1px),linear-gradient(90deg,var(--board-tint) 1px,transparent 1px);background-size:26px 26px;background-position:center}
+.diagram-panel figcaption{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-soft);margin-top:10px;text-align:center}
+.curve{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:520;stroke-dashoffset:520;animation:draw 1.6s ease forwards}
+.curve.demand{stroke:var(--board)}.curve.supply{stroke:var(--ink);animation-delay:.35s}
+.eq-dot{fill:var(--amber);stroke:var(--ink);stroke-width:2.5;transform-origin:center;animation:pulse 2.4s ease-in-out 2s infinite}
+.guide{stroke:var(--ink-soft);stroke-width:1.5;stroke-dasharray:5 6;opacity:0;animation:fadein .6s ease 1.7s forwards}
+.axis{stroke:var(--ink);stroke-width:2.5}
+.svg-label{font-family:var(--font-mono);font-size:15px;fill:var(--ink)}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes fadein{to{opacity:1}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
+section{padding:72px 20px}.alt{background:var(--paper-2)}
+.wrap{max-width:1120px;margin:0 auto}
+.section-head{max-width:640px;margin-bottom:42px}.section-head .eyebrow{margin-bottom:12px}
+h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2}
+.section-head p{margin-top:12px;color:var(--ink-soft)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+.card h3{font-family:var(--font-display);font-size:1.15rem;margin-bottom:10px}
+.card p{color:var(--ink-soft);font-size:.98rem}
+.tag{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;color:var(--board);background:var(--board-tint);padding:4px 10px;border-radius:5px;display:inline-block;margin-bottom:12px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lab{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;display:flex;flex-direction:column}
+.lab h3{font-family:var(--font-display);font-size:1.15rem;margin-bottom:4px}
+.lab .lab-sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:16px}
+.lab canvas{width:100%;height:auto;background:linear-gradient(var(--board-tint) 1px,transparent 1px),linear-gradient(90deg,var(--board-tint) 1px,transparent 1px);background-size:24px 24px;border:1px solid var(--line);border-radius:10px}
+.controls{margin-top:16px;display:grid;gap:14px}
+.control{display:grid;gap:6px}
+.control label{font-size:.85rem;font-weight:600;display:flex;justify-content:space-between}
+.control label span{font-family:var(--font-mono);color:var(--board)}
+.control input[type=range]{width:100%;accent-color:var(--board)}
+.readout{margin-top:14px;background:var(--paper-2);border-radius:10px;padding:12px 14px;font-family:var(--font-mono);font-size:.82rem;color:var(--ink);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.readout b{color:var(--board)}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;position:relative}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-weight:600;color:var(--amber);background:var(--ink);border-radius:8px;padding:4px 10px;font-size:.85rem;display:inline-block;margin-bottom:14px}
+.step h3{font-family:var(--font-display);font-size:1.08rem;margin-bottom:8px}
+.step p{color:var(--ink-soft);font-size:.95rem}
+.price-card{display:flex;flex-direction:column}
+.price-card .price{font-family:var(--font-display);font-weight:800;font-size:2rem;margin:8px 0 4px}
+.price-card .per{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-soft)}
+.price-card ul{list-style:none;margin:18px 0 24px;display:grid;gap:10px}
+.price-card li{padding-left:26px;position:relative;font-size:.95rem;color:var(--ink-soft)}
+.price-card li::before{content:"\2713";position:absolute;left:0;color:var(--board);font-weight:700}
+.price-card .btn{margin-top:auto;justify-content:center}
+.price-card.featured{border:2px solid var(--board);position:relative}
+.price-card.featured::after{content:"Δημοφιλές";position:absolute;top:-13px;right:20px;background:var(--amber);color:var(--ink);font-family:var(--font-mono);font-size:.72rem;font-weight:600;padding:4px 12px;border-radius:999px}
+.quote{font-style:italic;color:var(--ink);font-size:1rem}
+.quote-who{margin-top:14px;font-family:var(--font-mono);font-size:.8rem;color:var(--ink-soft);font-style:normal}
+.contact-box{background:var(--ink);color:#fff;border-radius:var(--radius);padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.contact-box h2{color:#fff}.contact-box p{color:#B9C6CE;margin-top:12px}
+.contact-actions{display:grid;gap:14px}
+.contact-actions a{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:14px 18px;color:#fff;font-weight:500;transition:background .15s ease}
+.contact-actions a:hover{background:rgba(255,255,255,.14)}
+.contact-actions .ico{font-size:1.2rem}
+.members{background:var(--board-tint);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.login-card{max-width:440px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+.login-card h3{font-family:var(--font-display);font-size:1.3rem;margin-bottom:6px}
+.login-card p{color:var(--ink-soft);font-size:.92rem;margin-bottom:20px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;font-size:.88rem;margin-bottom:6px}
+.field input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:var(--font-body);background:var(--paper)}
+.field input:focus{border-color:var(--board);outline:none}
+.login-error{display:none;background:#FDECEC;color:#A02222;border-radius:8px;padding:10px 14px;font-size:.88rem;margin-bottom:14px}
+.materials-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:30px}
+.materials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.material-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:10px}
+.material-card .m-date{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-soft)}
+.material-card h4{font-family:var(--font-display);font-size:1.05rem}
+.material-card p{color:var(--ink-soft);font-size:.9rem;flex:1}
+.material-card a{font-weight:600;font-size:.92rem}
+.hidden{display:none}
+footer{padding:34px 20px;text-align:center;color:var(--ink-soft);font-size:.88rem}
+footer .brand{justify-content:center;margin-bottom:8px}
+@media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:44px}.grid-3,.materials-grid,.steps,.lab-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){.lab-grid{grid-template-columns:1fr}}
+@media (max-width:620px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;padding:18px 20px;gap:16px;align-items:flex-start}.nav-links.open{display:flex}.menu-toggle{display:block}.grid-3,.materials-grid,.steps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.curve{animation:none;stroke-dashoffset:0}.guide{animation:none;opacity:1}.eq-dot{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav" aria-label="Κύρια πλοήγηση">
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Μαθήματα ΑΟΘ</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Μενού" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#yli">Ύλη</a>
+      <a href="#ergastirio">Εργαστήριο</a>
+      <a href="#methodos">Μέθοδος</a>
+      <a href="#paketa">Πακέτα</a>
+      <a href="#epikoinonia">Επικοινωνία</a>
+      <a class="btn btn-primary" href="#mathites">Περιοχή Μαθητών</a>
+    </div>
+  </nav>
+</header>
+<main id="top">
+<div class="hero">
+  <div>
+    <span class="eyebrow">ΑΟΘ · Γ' Λυκείου · Πανελλαδικές</span>
+    <h1>Φέρε την ΑΟΘ σε <span class="hl">ισορροπία</span>.</h1>
+    <p class="lead">Ιδιαίτερα μαθήματα Αρχών Οικονομικής Θεωρίας, δια ζώσης και online. Θεωρία που καταλαβαίνεις, ασκήσεις που λύνεις μόνος σου, και παραδείγματα από την πραγματική οικονομία — όχι στείρα αποστήθιση.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#epikoinonia">Κλείσε δωρεάν γνωριμία</a>
+      <a class="btn btn-ghost" href="#ergastirio">Παίξε με τα διαγράμματα</a>
+    </div>
+    <p class="hero-note">Δια ζώσης στη Β.Α. Αττική · Online σε όλη την Ελλάδα</p>
+  </div>
+  <figure class="diagram-panel" aria-label="Διάγραμμα προσφοράς και ζήτησης">
+    <svg viewBox="0 0 420 340" role="img" aria-hidden="true">
+      <line class="axis" x1="55" y1="20" x2="55" y2="295"/>
+      <line class="axis" x1="55" y1="295" x2="400" y2="295"/>
+      <text class="svg-label" x="28" y="34">P</text>
+      <text class="svg-label" x="388" y="325">Q</text>
+      <path class="curve demand" d="M 85 55 C 170 90, 280 190, 375 255"/>
+      <text class="svg-label" x="378" y="245" fill="#0F6B5C">D</text>
+      <path class="curve supply" d="M 85 260 C 170 225, 280 130, 375 60"/>
+      <text class="svg-label" x="378" y="62">S</text>
+      <line class="guide" x1="55" y1="157" x2="230" y2="157"/>
+      <line class="guide" x1="230" y1="157" x2="230" y2="295"/>
+      <text class="svg-label guide" x="20" y="162">P*</text>
+      <text class="svg-label guide" x="221" y="318">Q*</text>
+      <circle class="eq-dot" cx="230" cy="157" r="8"/>
+    </svg>
+    <figcaption>Σημείο ισορροπίας: εκεί συναντιόμαστε κάθε εβδομάδα.</figcaption>
+  </figure>
+</div>
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Γιατί εδώ</span>
+      <h2>Οικονομικά από κάποιον που ζει την οικονομία</h2>
+      <p>Η ΑΟΘ δεν είναι μάθημα αποστήθισης — είναι ο τρόπος που λειτουργεί ο κόσμος γύρω μας. Κι όταν το καταλάβεις έτσι, οι ορισμοί και οι ασκήσεις γίνονται απλή υπόθεση.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal"><span class="tag">ΕΜΠΕΙΡΙΑ</span><h3>25+ χρόνια στην πραγματική οικονομία</h3><p>Ζήτηση, προσφορά, κόστος, τιμές — δεν τα διάβασα μόνο σε βιβλίο. Τα έζησα ως επιχειρηματίας. Κάθε έννοια συνοδεύεται από παράδειγμα που θα θυμάσαι στις εξετάσεις.</p></div>
+      <div class="card reveal"><span class="tag">ΕΞΑΤΟΜΙΚΕΥΣΗ</span><h3>Πλάνο φτιαγμένο για σένα</h3><p>Ξεκινάμε με διαγνωστικό τεστ και χτίζουμε πρόγραμμα πάνω στα δικά σου κενά — όχι ένα πρόγραμμα «για όλους» που δεν ταιριάζει σε κανέναν.</p></div>
+      <div class="card reveal"><span class="tag">ΥΛΙΚΟ</span><h3>Περιοχή μαθητών με υλικό 24/7</h3><p>Σημειώσεις, φυλλάδια ασκήσεων, διαγωνίσματα και SOS θέματα ανεβαίνουν στην περιοχή μαθητών — τα βρίσκεις όποτε τα χρειαστείς, από κινητό ή υπολογιστή.</p></div>
+    </div>
+  </div>
+</section>
+<section id="ergastirio" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Διαδραστικό εργαστήριο</span>
+      <h2>Πειραματίσου με τα διαγράμματα της ΑΟΘ</h2>
+      <p>Σύρε τα ρυθμιστικά και δες ζωντανά τι παθαίνουν οι καμπύλες, η ισορροπία και τα έσοδα. Έτσι δουλεύουμε και στο μάθημα — κατανόηση, όχι αποστήθιση.</p>
+    </div>
+    <div class="lab-grid">
+      <div class="lab reveal">
+        <h3>Προσφορά &amp; Ζήτηση</h3>
+        <p class="lab-sub">Μετατόπισε τις καμπύλες και βρες τη νέα ισορροπία.</p>
+        <canvas id="sdCanvas" width="440" height="320" aria-label="Διάγραμμα προσφοράς και ζήτησης"></canvas>
+        <div class="controls">
+          <div class="control"><label>Μετατόπιση Ζήτησης <span id="sdDemandVal">0</span></label><input type="range" id="sdDemand" min="-60" max="60" value="0"></div>
+          <div class="control"><label>Μετατόπιση Προσφοράς <span id="sdSupplyVal">0</span></label><input type="range" id="sdSupply" min="-60" max="60" value="0"></div>
+        </div>
+        <div class="readout"><span>Τιμή ισορροπίας: <b id="sdPrice">—</b></span><span>Ποσότητα ισορροπίας: <b id="sdQty">—</b></span></div>
+      </div>
+      <div class="lab reveal">
+        <h3>Ελαστικότητα &amp; Συνολική Δαπάνη</h3>
+        <p class="lab-sub">Άλλαξε την τιμή και δες πώς κινείται η δαπάνη ανάλογα με την ελαστικότητα.</p>
+        <canvas id="elCanvas" width="440" height="320" aria-label="Διάγραμμα ελαστικότητας και συνολικής δαπάνης"></canvas>
+        <div class="controls">
+          <div class="control"><label>Ελαστικότητα ζήτησης |E<sub>D</sub>| <span id="elElVal">1.0</span></label><input type="range" id="elElas" min="20" max="250" value="100"></div>
+          <div class="control"><label>Τιμή (P) <span id="elPriceVal">50</span></label><input type="range" id="elPrice" min="10" max="90" value="50"></div>
+        </div>
+        <div class="readout"><span>Ζητούμενη ποσότητα: <b id="elQty">—</b></span><span>Συνολική δαπάνη: <b id="elRev">—</b></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="yli">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Η ύλη</span>
+      <h2>Καλύπτουμε όλη την εξεταστέα ύλη — με σειρά και σύστημα</h2>
+      <p>Θεωρία, ερωτήσεις σωστού–λάθους, πολλαπλής επιλογής και ασκήσεις, κεφάλαιο-κεφάλαιο, με επαναλήψεις σε κύκλους.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal"><span class="tag">ΚΕΦ. 1</span><h3>Βασικές οικονομικές έννοιες</h3><p>Οικονομικό πρόβλημα, καμπύλη παραγωγικών δυνατοτήτων, κόστος ευκαιρίας.</p></div>
+      <div class="card reveal"><span class="tag">ΚΕΦ. 2</span><h3>Η ζήτηση των αγαθών</h3><p>Νόμος ζήτησης, ελαστικότητες, συνολική δαπάνη — το κεφάλαιο που «κρίνει» ασκήσεις.</p></div>
+      <div class="card reveal"><span class="tag">ΚΕΦ. 3</span><h3>Παραγωγή &amp; κόστος</h3><p>Συνάρτηση παραγωγής, οριακό προϊόν, βραχυχρόνιο κόστος επιχείρησης.</p></div>
+      <div class="card reveal"><span class="tag">ΚΕΦ. 4</span><h3>Η προσφορά των αγαθών</h3><p>Νόμος προσφοράς, ελαστικότητα προσφοράς, μετατοπίσεις καμπύλης.</p></div>
+      <div class="card reveal"><span class="tag">ΚΕΦ. 5</span><h3>Προσδιορισμός τιμών</h3><p>Ισορροπία αγοράς, υπερβάλλουσα ζήτηση/προσφορά, κρατική παρέμβαση.</p></div>
+      <div class="card reveal"><span class="tag">ΣΥΝΔΥΑΣΤΙΚΑ</span><h3>Επαναλήψεις &amp; SOS θέματα</h3><p>Συνδυαστικές ασκήσεις, θέματα προηγούμενων ετών και προσομοιώσεις πανελλαδικών.</p></div>
+    </div>
+  </div>
+</section>
+<section id="methodos" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Η μέθοδος</span><h2>Τέσσερα βήματα μέχρι τις πανελλαδικές</h2></div>
+    <div class="steps">
+      <div class="step reveal"><h3>Διαγνωστικό τεστ</h3><p>Δωρεάν πρώτη συνάντηση: βλέπουμε πού βρίσκεσαι και τι χρειάζεσαι.</p></div>
+      <div class="step reveal"><h3>Προσωπικό πλάνο</h3><p>Πρόγραμμα ύλης και στόχων ανά εβδομάδα, προσαρμοσμένο στο επίπεδό σου.</p></div>
+      <div class="step reveal"><h3>Μάθημα + εξάσκηση</h3><p>Θεωρία με παραδείγματα, λυμένες ασκήσεις και φυλλάδια για το σπίτι στην περιοχή μαθητών.</p></div>
+      <div class="step reveal"><h3>Διαγωνίσματα &amp; επανάληψη</h3><p>Τακτικά διαγωνίσματα προσομοίωσης με βαθμολόγηση και αναλυτική ανατροφοδότηση.</p></div>
+    </div>
+  </div>
+</section>
+<section id="paketa">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Πακέτα</span><h2>Διάλεξε τον τρόπο που σου ταιριάζει</h2><p>Οι τιμές είναι ενδεικτικές — επικοινώνησε για το πρόγραμμα και τη διαθεσιμότητα.</p></div>
+    <div class="grid-3">
+      <div class="card price-card reveal"><span class="tag">ΑΤΟΜΙΚΟ</span><h3>Ιδιαίτερο 1:1</h3><div class="price">__ €</div><span class="per">/ ώρα · δια ζώσης ή online</span><ul><li>Πλήρως εξατομικευμένο πλάνο</li><li>Πρόσβαση στην περιοχή μαθητών</li><li>Διαγωνίσματα με διόρθωση</li><li>Επικοινωνία εκτός μαθήματος για απορίες</li></ul><a class="btn btn-primary" href="#epikoinonia">Ρώτησέ με</a></div>
+      <div class="card price-card featured reveal"><span class="tag">ΓΚΡΟΥΠ</span><h3>Γκρουπ 2–3 ατόμων</h3><div class="price">__ €</div><span class="per">/ ώρα ανά μαθητή</span><ul><li>Μικρό τμήμα, μεγάλη προσοχή</li><li>Πρόσβαση στην περιοχή μαθητών</li><li>Κοινά διαγωνίσματα &amp; άμιλλα</li><li>Οικονομικότερη λύση</li></ul><a class="btn btn-primary" href="#epikoinonia">Ρώτησέ με</a></div>
+      <div class="card price-card reveal"><span class="tag">ONLINE</span><h3>Online μάθημα</h3><div class="price">__ €</div><span class="per">/ ώρα · σε όλη την Ελλάδα</span><ul><li>Ζωντανό μάθημα με κάμερα &amp; πίνακα</li><li>Πρόσβαση στην περιοχή μαθητών</li><li>Ηχογραφημένες λύσεις ασκήσεων</li><li>Ευέλικτο ωράριο</li></ul><a class="btn btn-primary" href="#epikoinonia">Ρώτησέ με</a></div>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Γνώμες</span><h2>Τι λένε μαθητές &amp; γονείς</h2></div>
+    <div class="grid-3">
+      <div class="card reveal"><p class="quote">«Η ΑΟΘ ήταν το μάθημα που φοβόμουν — τελικά έγραψα τον καλύτερό μου βαθμό στις πανελλαδικές.»</p><p class="quote-who">— Μαθήτρια Γ' Λυκείου</p></div>
+      <div class="card reveal"><p class="quote">«Τα παραδείγματα από πραγματικές επιχειρήσεις με βοήθησαν να καταλάβω τη θεωρία, όχι να την παπαγαλίσω.»</p><p class="quote-who">— Μαθητής ΕΠΑΛ</p></div>
+      <div class="card reveal"><p class="quote">«Σοβαρότητα, συνέπεια και συνεχής ενημέρωση για την πρόοδο του παιδιού. Το συστήνω ανεπιφύλακτα.»</p><p class="quote-who">— Γονέας</p></div>
+    </div>
+  </div>
+</section>
+<section id="epikoinonia">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div><span class="eyebrow">Επικοινωνία</span><h2>Κλείσε δωρεάν μάθημα γνωριμίας</h2><p>Χωρίς καμία δέσμευση: γνωριζόμαστε, κάνουμε το διαγνωστικό τεστ και σου προτείνω πλάνο. Απάντηση συνήθως εντός λίγων ωρών.</p></div>
+      <div class="contact-actions">
+        <a href="tel:+306900000000"><span class="ico">📞</span> Τηλέφωνο: 69Χ ΧΧΧ ΧΧΧΧ</a>
+        <a href="viber://chat?number=%2B306900000000"><span class="ico">💬</span> Μήνυμα στο Viber</a>
+        <a href="mailto:email@example.com?subject=Ενδιαφέρον για μαθήματα ΑΟΘ"><span class="ico">✉️</span> Στείλε email</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="mathites" class="members">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Περιοχή Μαθητών</span><h2>Το υλικό σου, όποτε το χρειάζεσαι</h2><p>Ο κωδικός πρόσβασης δίνεται στο πρώτο μάθημα. Εδώ ανεβαίνουν σημειώσεις, φυλλάδια, διαγωνίσματα και λύσεις.</p></div>
+    <div class="login-card" id="loginCard">
+      <h3>Σύνδεση μαθητή</h3>
+      <p>Γράψε τον κωδικό που σου έχω δώσει.</p>
+      <div class="login-error" id="loginError">Λάθος κωδικός. Δοκίμασε ξανά ή στείλε μου μήνυμα.</div>
+      <div class="field"><label for="studentCode">Κωδικός πρόσβασης</label><input type="password" id="studentCode" autocomplete="off" placeholder="π.χ. AOTH2026"></div>
+      <button class="btn btn-primary" id="loginBtn" style="width:100%;justify-content:center">Είσοδος</button>
+    </div>
+    <div class="hidden" id="materialsArea">
+      <div class="materials-head"><h3 style="font-family:var(--font-display);font-size:1.3rem">📚 Διαθέσιμο υλικό</h3><button class="btn btn-ghost" id="logoutBtn">Αποσύνδεση</button></div>
+      <div class="materials-grid" id="materialsGrid"></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="brand"><span class="dot" aria-hidden="true"></span>Μαθήματα ΑΟΘ</div>
+  <p>© 2026 · Ιδιαίτερα μαθήματα Αρχών Οικονομικής Θεωρίας · Β.Α. Αττική &amp; Online</p>
+</footer>
+<script>
+/* ΡΥΘΜΙΣΕΙΣ — ΑΛΛΑΞΕ ΕΔΩ */
+const STUDENT_CODE = "AOTH2026";
+const MATERIALS = [
+  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 1", title:"Σημειώσεις: Βασικές οικονομικές έννοιες", desc:"Θεωρία με παραδείγματα, ΚΠΔ και κόστος ευκαιρίας.", link:"#" },
+  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 2", title:"Φυλλάδιο ασκήσεων: Ελαστικότητες", desc:"20 ασκήσεις κλιμακούμενης δυσκολίας με απαντήσεις.", link:"#" },
+  { date:"Ιούλιος 2026", tag:"ΔΙΑΓΩΝΙΣΜΑ", title:"Προσομοίωση πανελλαδικών Νο 1", desc:"Πλήρες θέμα εξετάσεων με βαθμολογικό οδηγό.", link:"#" }
+];
+const loginCard=document.getElementById('loginCard'),materialsArea=document.getElementById('materialsArea'),materialsGrid=document.getElementById('materialsGrid'),loginError=document.getElementById('loginError'),codeInput=document.getElementById('studentCode');
+function renderMaterials(){materialsGrid.innerHTML="";MATERIALS.forEach(m=>{const c=document.createElement('div');c.className='material-card';c.innerHTML='<span class="m-date">'+m.date+' · '+m.tag+'</span><h4></h4><p></p><a target="_blank" rel="noopener">Άνοιγμα υλικού →</a>';c.querySelector('h4').textContent=m.title;c.querySelector('p').textContent=m.desc;c.querySelector('a').href=m.link;materialsGrid.appendChild(c);});}
+function tryLogin(){if(codeInput.value.trim()===STUDENT_CODE){loginCard.classList.add('hidden');materialsArea.classList.remove('hidden');loginError.style.display='none';renderMaterials();}else{loginError.style.display='block';codeInput.value='';codeInput.focus();}}
+document.getElementById('loginBtn').addEventListener('click',tryLogin);
+codeInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin();});
+document.getElementById('logoutBtn').addEventListener('click',()=>{materialsArea.classList.add('hidden');loginCard.classList.remove('hidden');codeInput.value='';});
+const menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',open);});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+const observer=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+/* CHART 1 — Προσφορά & Ζήτηση */
+(function(){
+  const cv=document.getElementById('sdCanvas'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height,PAD=44;
+  const dEl=document.getElementById('sdDemand'),sEl=document.getElementById('sdSupply');
+  const cs=getComputedStyle(document.documentElement);
+  const board=cs.getPropertyValue('--board').trim()||'#0F6B5C',ink=cs.getPropertyValue('--ink').trim()||'#14232E',amber=cs.getPropertyValue('--amber').trim()||'#FFC53D';
+  function eq(sd,ss){const q=(80+sd-ss)/2;const p=20+q+ss;return{q,p};}
+  const X=q=>PAD+(q/100)*(W-2*PAD),Y=p=>H-PAD-(p/100)*(H-2*PAD);
+  function line(fn,color){ctx.strokeStyle=color;ctx.lineWidth=3;ctx.beginPath();for(let q=0;q<=100;q++){const p=fn(q),x=X(q),y=Y(p);q===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();}
+  function draw(){
+    const sd=+dEl.value,ss=+sEl.value;ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle=ink;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(PAD,PAD-8);ctx.lineTo(PAD,H-PAD);ctx.lineTo(W-PAD+8,H-PAD);ctx.stroke();
+    ctx.fillStyle=ink;ctx.font='13px JetBrains Mono, monospace';ctx.fillText('P',PAD-30,PAD+2);ctx.fillText('Q',W-PAD+12,H-PAD+4);
+    line(q=>Math.max(0,Math.min(100,100-q+sd)),board);
+    line(q=>Math.max(0,Math.min(100,20+q+ss)),ink);
+    ctx.fillStyle=board;ctx.fillText('D',X(96),Y(Math.max(0,4+sd))+2);
+    ctx.fillStyle=ink;ctx.fillText('S',X(94),Y(Math.min(100,114+ss)));
+    const r=eq(sd,ss);
+    if(r.q>=0&&r.q<=100&&r.p>=0&&r.p<=100){
+      ctx.strokeStyle='rgba(61,83,97,.6)';ctx.setLineDash([5,6]);ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(PAD,Y(r.p));ctx.lineTo(X(r.q),Y(r.p));ctx.lineTo(X(r.q),H-PAD);ctx.stroke();ctx.setLineDash([]);
+      ctx.beginPath();ctx.fillStyle=amber;ctx.strokeStyle=ink;ctx.lineWidth=2.5;ctx.arc(X(r.q),Y(r.p),7,0,Math.PI*2);ctx.fill();ctx.stroke();
+    }
+    document.getElementById('sdDemandVal').textContent=(sd>0?'+':'')+sd;
+    document.getElementById('sdSupplyVal').textContent=(ss>0?'+':'')+ss;
+    document.getElementById('sdPrice').textContent=r.p.toFixed(1);
+    document.getElementById('sdQty').textContent=r.q.toFixed(1);
+  }
+  dEl.addEventListener('input',draw);sEl.addEventListener('input',draw);draw();
+})();
+/* CHART 2 — Ελαστικότητα & Συνολική Δαπάνη */
+(function(){
+  const cv=document.getElementById('elCanvas'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height,PAD=44;
+  const elEl=document.getElementById('elElas'),pEl=document.getElementById('elPrice');
+  const cs=getComputedStyle(document.documentElement);
+  const board=cs.getPropertyValue('--board').trim()||'#0F6B5C',ink=cs.getPropertyValue('--ink').trim()||'#14232E',amber=cs.getPropertyValue('--amber').trim()||'#FFC53D';
+  function Qof(P,E){const A=50*Math.pow(50,E);return A*Math.pow(P,-E);}
+  const X=q=>PAD+(q/100)*(W-2*PAD),Y=p=>H-PAD-(p/100)*(H-2*PAD);
+  function draw(){
+    const E=(+elEl.value)/100,P=+pEl.value;ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle=ink;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(PAD,PAD-8);ctx.lineTo(PAD,H-PAD);ctx.lineTo(W-PAD+8,H-PAD);ctx.stroke();
+    ctx.fillStyle=ink;ctx.font='13px JetBrains Mono, monospace';ctx.fillText('P',PAD-30,PAD+2);ctx.fillText('Q',W-PAD+12,H-PAD+4);
+    ctx.strokeStyle=board;ctx.lineWidth=3;ctx.beginPath();let st=false;
+    for(let p=5;p<=100;p+=1){const q=Math.min(100,Qof(p,E)),x=X(q),y=Y(p);if(!st){ctx.moveTo(x,y);st=true;}else ctx.lineTo(x,y);}ctx.stroke();
+    ctx.fillStyle=board;ctx.fillText('D',X(Math.min(100,Qof(8,E)))+4,Y(8));
+    const Q=Math.min(100,Qof(P,E));
+    ctx.fillStyle='rgba(255,197,61,.25)';ctx.fillRect(PAD,Y(P),X(Q)-PAD,(H-PAD)-Y(P));
+    ctx.strokeStyle=amber;ctx.lineWidth=2;ctx.strokeRect(PAD,Y(P),X(Q)-PAD,(H-PAD)-Y(P));
+    ctx.strokeStyle='rgba(61,83,97,.6)';ctx.setLineDash([5,6]);ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(PAD,Y(P));ctx.lineTo(X(Q),Y(P));ctx.lineTo(X(Q),H-PAD);ctx.stroke();ctx.setLineDash([]);
+    ctx.beginPath();ctx.fillStyle=amber;ctx.strokeStyle=ink;ctx.lineWidth=2.5;ctx.arc(X(Q),Y(P),7,0,Math.PI*2);ctx.fill();ctx.stroke();
+    document.getElementById('elElVal').textContent=E.toFixed(1);
+    document.getElementById('elPriceVal').textContent=P;
+    document.getElementById('elQty').textContent=Q.toFixed(1);
+    document.getElementById('elRev').textContent=Math.round(P*Q).toLocaleString('el-GR');
+  }
+  elEl.addEventListener('input',draw);pEl.addEventListener('input',draw);draw();
+})();
+</script>
+</body>
+</html>
