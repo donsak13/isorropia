@@ -30,6 +30,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(231,235,236,.92);backdro
 .nav-links{display:flex;gap:22px;margin-left:auto;align-items:center}
 .nav-links a{color:var(--ink-soft);font-weight:500;font-size:.95rem}
 .nav-links a:hover{color:var(--board)}
+.nav-links a.btn-primary{color:#fff}
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:999px;padding:11px 22px;border:2px solid transparent;cursor:pointer;font-size:.95rem;font-family:var(--font-body);transition:transform .15s ease,background .15s ease}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:var(--board);color:#fff}.btn-primary:hover{background:var(--board-dark)}
@@ -113,12 +114,57 @@ h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.
 .material-card h4{font-family:var(--font-display);font-size:1.05rem}
 .material-card p{color:var(--ink-soft);font-size:.9rem;flex:1}
 .material-card a{font-weight:600;font-size:.92rem}
+.material-card .m-soon{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-soft)}
 .hidden{display:none}
+.book-intro{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin-bottom:26px}
+.book-intro p{color:var(--ink-soft);font-size:.92rem;max-width:44em}
+.book-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.book-tab{font-family:var(--font-mono);font-size:.8rem;font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink-soft);cursor:pointer;transition:background .15s ease,color .15s ease}
+.book-tab:hover{border-color:var(--board);color:var(--board)}
+.book-tab[aria-selected="true"]{background:var(--board);border-color:var(--board);color:#fff}
+.book-panel{display:grid;grid-template-columns:1.35fr .65fr;gap:22px;align-items:start}
+.book-panel[hidden]{display:none}
+.book-main,.book-side{display:grid;gap:18px;min-width:0}
+.book-main>*,.book-side>*{min-width:0}
+.excerpt{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--board);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+.excerpt h3{font-family:var(--font-display);font-size:1.08rem;margin-bottom:10px}
+.excerpt blockquote{font-family:var(--font-display);font-size:1.04rem;line-height:1.6;color:var(--ink);position:relative;padding-left:26px}
+.excerpt blockquote::before{content:"«";position:absolute;left:0;top:-6px;font-size:2rem;color:var(--board);line-height:1}
+.excerpt .src{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-soft);margin-top:10px}
+.excerpt .simple{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);color:var(--ink-soft);font-size:.95rem}
+.excerpt .simple b{color:var(--board);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;display:block;margin-bottom:4px}
+.side-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.side-box h4{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--board);margin-bottom:12px}
+.formula{font-family:var(--font-mono);font-size:.86rem;background:var(--paper-2);border-radius:8px;padding:9px 12px;margin-bottom:8px}
+.formula small{display:block;font-family:var(--font-body);color:var(--ink-soft);font-size:.78rem;margin-top:2px}
+.solved{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.solved summary{cursor:pointer;padding:18px 22px;font-family:var(--font-display);font-weight:700;font-size:1.02rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;list-style:none}
+.solved summary::-webkit-details-marker{display:none}
+.solved summary::after{content:"+";margin-left:auto;font-family:var(--font-mono);font-size:1.2rem;color:var(--board)}
+.solved[open] summary::after{content:"−"}
+.solved summary .tag{margin-bottom:0}
+.solved-body{padding:0 22px 20px}
+.solved-body .problem{color:var(--ink);font-size:.95rem;margin-bottom:14px}
+.solved-body .src{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-soft);margin-top:12px}
+.tbl-wrap{overflow-x:auto;margin-bottom:12px}
+.sol-table{border-collapse:collapse;font-family:var(--font-mono);font-size:.84rem;min-width:100%}
+.sol-table th,.sol-table td{padding:7px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.sol-table th{background:var(--board-tint);color:var(--board);font-weight:600}
+.sol-table th:first-child,.sol-table td:first-child{text-align:left}
+.sol-steps{list-style:none;display:grid;gap:8px}
+.sol-steps li{font-size:.93rem;color:var(--ink-soft);padding-left:18px;position:relative}
+.sol-steps li::before{content:"→";position:absolute;left:0;color:var(--board)}
+.sol-steps b{color:var(--ink)}
+.side-box.trap{background:#FFF6DD;border-color:#F2D38A}
+.side-box.trap h4{color:#8A5A00}
+.side-box ul{list-style:none;display:grid;gap:10px}
+.side-box li{font-size:.92rem;color:var(--ink);padding-left:22px;position:relative}
+.side-box li::before{content:"!";position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--amber);color:var(--ink);font-family:var(--font-mono);font-size:.7rem;font-weight:700;display:grid;place-items:center}
 footer{padding:34px 20px;text-align:center;color:var(--ink-soft);font-size:.88rem}
 footer .brand{justify-content:center;margin-bottom:8px}
-@media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:44px}.grid-3,.materials-grid,.steps,.lab-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;padding:18px 20px;gap:16px;align-items:flex-start}.nav-links.open{display:flex}.menu-toggle{display:block}.book-panel{grid-template-columns:1fr}.contact-box{grid-template-columns:1fr;padding:36px 28px}.hero{grid-template-columns:1fr;padding-top:44px}.grid-3,.materials-grid,.steps,.lab-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.lab-grid{grid-template-columns:1fr}}
-@media (max-width:620px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;padding:18px 20px;gap:16px;align-items:flex-start}.nav-links.open{display:flex}.menu-toggle{display:block}.grid-3,.materials-grid,.steps{grid-template-columns:1fr}}
+@media (max-width:620px){section{padding:56px 16px}.hero{padding-left:16px;padding-right:16px}.nav{padding:12px 16px}.contact-box{padding:28px 18px;gap:24px}.contact-actions a{padding:12px 14px;word-break:break-word}.book-intro{padding:16px}.book-intro .btn{width:100%;justify-content:center}.excerpt{padding:18px 16px}.solved summary{padding:16px}.solved-body{padding:0 16px 16px}.login-card{padding:26px 20px}.grid-3,.materials-grid,.steps{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.curve{animation:none;stroke-dashoffset:0}.guide{animation:none;opacity:1}.eq-dot{animation:none}.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
@@ -129,6 +175,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     <button class="menu-toggle" id="menuToggle" aria-label="Μενού" aria-expanded="false">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="#yli">Ύλη</a>
+      <a href="#vivlio">Σχολικό βιβλίο</a>
       <a href="#ergastirio">Εργαστήριο</a>
       <a href="#methodos">Μέθοδος</a>
       <a href="#paketa">Πακέτα</a>
@@ -230,7 +277,171 @@ footer .brand{justify-content:center;margin-bottom:8px}
     </div>
   </div>
 </section>
-<section id="methodos" class="alt">
+<section id="vivlio" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Το σχολικό βιβλίο</span>
+      <h2>Το σχολικό βιβλίο, εξηγημένο απλά</h2>
+      <p>Στις πανελλαδικές η θεωρία βαθμολογείται με βάση το σχολικό βιβλίο. Εδώ θα βρεις τους ορισμούς που «πέφτουν», τι σημαίνουν με απλά λόγια, τους τύπους, τις παγίδες και λυμένες ασκήσεις του βιβλίου, κεφάλαιο προς κεφάλαιο.</p>
+    </div>
+    <!-- Τα αποσπάσματα είναι σύντομα και παρατίθενται για εκπαιδευτικό σκοπό. Έλεγξε τη διατύπωση με την τρέχουσα έκδοση του βιβλίου πριν τη δημοσίευση. -->
+    <div class="book-intro reveal">
+      <p>📘 «Αρχές Οικονομικής Θεωρίας», Γ' Λυκείου, και το συνοδευτικό βιβλίο «Λύσεις Ασκήσεων» (Λιανός, Παπαβασιλείου, Χατζηανδρέου · ΙΤΥΕ «Διόφαντος»). Σε κάθε κεφάλαιο θα βρεις σύντομα αποσπάσματα και μία λυμένη άσκηση. Διάβαζε πάντα ολόκληρο το κεφάλαιο από το επίσημο βιβλίο.</p>
+      <a class="btn btn-ghost" href="https://ebooks.edu.gr/ebooks/v/pdf/8547/2522/22-0299-01_V1_Arches-Oikonomikis-Theorias_G-Lykeiou-Spoudon-Oikonomias-Pliroforikis_Vivlio-Mathiti/" target="_blank" rel="noopener">Άνοιξε το βιβλίο μαθητή (PDF) ↗</a>
+    </div>
+    <div class="book-tabs" role="tablist" aria-label="Κεφάλαια σχολικού βιβλίου">
+      <button class="book-tab" role="tab" id="bt1" aria-controls="bp1" aria-selected="true">ΚΕΦ. 1 · Βασικές έννοιες</button>
+      <button class="book-tab" role="tab" id="bt2" aria-controls="bp2" aria-selected="false" tabindex="-1">ΚΕΦ. 2 · Ζήτηση</button>
+      <button class="book-tab" role="tab" id="bt3" aria-controls="bp3" aria-selected="false" tabindex="-1">ΚΕΦ. 3 · Παραγωγή &amp; κόστος</button>
+      <button class="book-tab" role="tab" id="bt4" aria-controls="bp4" aria-selected="false" tabindex="-1">ΚΕΦ. 4 · Προσφορά</button>
+      <button class="book-tab" role="tab" id="bt5" aria-controls="bp5" aria-selected="false" tabindex="-1">ΚΕΦ. 5 · Τιμές</button>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp1" aria-labelledby="bt1">
+      <div class="book-main">
+        <div class="excerpt"><h3>Καμπύλη παραγωγικών δυνατοτήτων</h3>
+          <blockquote>Η καμπύλη παραγωγικών δυνατοτήτων δείχνει τους μέγιστους δυνατούς συνδυασμούς δύο αγαθών που μπορεί να παραγάγει μια οικονομία, όταν απασχολεί πλήρως και αποδοτικά όλους τους παραγωγικούς της συντελεστές, με δεδομένη την τεχνολογία.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 1</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Σημείο πάνω στην καμπύλη: η οικονομία δουλεύει «στο φουλ». Σημείο μέσα: ανεργία ή σπατάλη πόρων. Σημείο έξω: ανέφικτο, μέχρι να αυξηθούν οι πόροι ή να βελτιωθεί η τεχνολογία.</p>
+        </div>
+        <div class="excerpt"><h3>Κόστος ευκαιρίας</h3>
+          <blockquote>Κόστος ευκαιρίας ή εναλλακτικό κόστος ενός αγαθού είναι η ποσότητα ενός άλλου αγαθού που θυσιάζεται, για να παραχθεί μία επιπλέον μονάδα του πρώτου.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 1</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Αν για 1 επιπλέον τόνο σιτάρι «χάνεις» 3 τόνους βαμβάκι, το κόστος ευκαιρίας του σιταριού είναι 3 τόνοι βαμβάκι. Είναι αυτό που αφήνεις πίσω, όχι τα χρήματα που πληρώνεις.</p>
+        </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Κόστος ευκαιρίας και εφικτοί συνδυασμοί</summary>
+          <div class="solved-body"><p class="problem">Από τον πίνακα παραγωγικών δυνατοτήτων, να βρεθεί το κόστος ευκαιρίας του Χ και να εξεταστούν οι συνδυασμοί (160, 110), (140, 180) και (90, 310).</p><div class="tbl-wrap"><table class="sol-table"><thead><tr><th>Συνδυασμός</th><th>Χ</th><th>Ψ</th><th>ΚΕ<sub>Χ</sub> = ΔΨ/ΔΧ</th></tr></thead><tbody><tr><td>Α</td><td>0</td><td>500</td><td>–</td></tr><tr><td>Β</td><td>100</td><td>300</td><td>200/100 = 2</td></tr><tr><td>Γ</td><td>150</td><td>150</td><td>150/50 = 3</td></tr><tr><td>Δ</td><td>180</td><td>0</td><td>150/30 = 5</td></tr></tbody></table></div><ul class="sol-steps"><li><b>Χ = 160</b> (μεταξύ Γ και Δ, ΚΕ = 5): Ψ = 150 − 5·10 = 100 &lt; 110, άρα ο συνδυασμός είναι <b>ανέφικτος</b>.</li><li><b>Χ = 140</b> (μεταξύ Β και Γ, ΚΕ = 3): Ψ = 300 − 3·40 = 180, άρα ο συνδυασμός είναι <b>άριστος</b> (πάνω στην ΚΠΔ).</li><li><b>Χ = 90</b> (μεταξύ Α και Β, ΚΕ = 2): Ψ = 500 − 2·90 = 320 &gt; 310, άρα ο συνδυασμός είναι <b>εφικτός</b> (κάτω από την ΚΠΔ).</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 1, Άσκηση 11</p></div>
+        </details>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">ΚΕ<sub>Χ</sub> = |ΔΨ / ΔΧ|<small>κόστος ευκαιρίας του Χ σε μονάδες Ψ</small></div>
+          <div class="formula">ΚΕ<sub>Ψ</sub> = 1 / ΚΕ<sub>Χ</sub><small>το αντίστροφο, για το άλλο αγαθό</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Το κόστος ευκαιρίας μετριέται σε μονάδες του άλλου αγαθού, όχι σε ευρώ.</li>
+          <li>Αυξανόμενο κόστος ευκαιρίας σημαίνει ΚΠΔ κοίλη ως προς την αρχή των αξόνων.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp2" aria-labelledby="bt2" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Νόμος της ζήτησης</h3>
+          <blockquote>Όταν η τιμή ενός αγαθού αυξάνεται, η ζητούμενη ποσότητα μειώνεται και, αντίστροφα, όταν η τιμή μειώνεται, η ζητούμενη ποσότητα αυξάνεται, με την προϋπόθεση ότι οι άλλοι προσδιοριστικοί παράγοντες της ζήτησης παραμένουν σταθεροί.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 2</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Ακριβαίνει κάτι, αγοράζουμε λιγότερο. Το «οι άλλοι παράγοντες σταθεροί» (ceteris paribus) δεν είναι διακοσμητικό: αν το ξεχάσεις στον ορισμό, χάνεις μονάδες.</p>
+        </div>
+        <div class="excerpt"><h3>Ελαστικότητα ζήτησης ως προς την τιμή</h3>
+          <blockquote>Η ελαστικότητα ζήτησης ως προς την τιμή μετρά την ποσοστιαία μεταβολή της ζητούμενης ποσότητας ενός αγαθού, που προκαλείται από μια ποσοστιαία μεταβολή της τιμής του, ενώ οι άλλοι προσδιοριστικοί παράγοντες παραμένουν σταθεροί.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 2</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Πόσο «ευαίσθητος» είναι ο καταναλωτής στην τιμή. |E<sub>D</sub>| &gt; 1: η τιμή πέφτει και η δαπάνη ανεβαίνει. |E<sub>D</sub>| &lt; 1: η τιμή πέφτει και η δαπάνη πέφτει. |E<sub>D</sub>| = 1: η δαπάνη μένει σταθερή. <a href="#ergastirio">Δοκίμασέ το στο εργαστήριο →</a></p>
+        </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Ελαστικότητα από συνάρτηση ζήτησης</summary>
+          <div class="solved-body"><p class="problem">Δίνεται Q<sub>D</sub> = 300 − 2P. Να υπολογιστεί η ελαστικότητα ζήτησης όταν η τιμή αυξάνεται από 50 σε 60.</p><ul class="sol-steps"><li>P<sub>1</sub> = 50 ⇒ Q<sub>1</sub> = 300 − 2·50 = 200</li><li>P<sub>2</sub> = 60 ⇒ Q<sub>2</sub> = 300 − 2·60 = 180</li><li>E<sub>D</sub> = (ΔQ/ΔP)·(P<sub>1</sub>/Q<sub>1</sub>) = (−20/10)·(50/200) = <b>−0,5</b>, άρα ανελαστική ζήτηση.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 2, Άσκηση 7</p></div>
+        </details>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">E<sub>D</sub> = (ΔQ / ΔP) · (P<sub>1</sub> / Q<sub>1</sub>)<small>ελαστικότητα σε σημείο</small></div>
+          <div class="formula">ΣΔ = P · Q<small>συνολική δαπάνη καταναλωτών</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Αλλάζει η τιμή: κίνηση πάνω στην καμπύλη (μεταβολή ζητούμενης ποσότητας). Αλλάζει εισόδημα, τιμές άλλων αγαθών ή προτιμήσεις: μετατόπιση (μεταβολή ζήτησης).</li>
+          <li>Η E<sub>D</sub> είναι αρνητική. Για συγκρίσεις χρησιμοποίησε την απόλυτη τιμή της.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp3" aria-labelledby="bt3" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Νόμος της φθίνουσας απόδοσης</h3>
+          <blockquote>Αν αυξάνεται η ποσότητα ενός μεταβλητού συντελεστή, ενώ οι ποσότητες των άλλων συντελεστών παραμένουν σταθερές, θα φθάσουμε σε ένα σημείο πέρα από το οποίο το οριακό προϊόν του μεταβλητού συντελεστή θα μειώνεται.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 3</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Μια κουζίνα και όλο και περισσότεροι μάγειρες: στην αρχή κάθε νέος μάγειρας βγάζει πολλά πιάτα, μετά όλο και λιγότερα, γιατί η κουζίνα (ο σταθερός συντελεστής) δεν μεγαλώνει.</p>
+        </div>
+        <div class="excerpt"><h3>Οριακό κόστος</h3>
+          <blockquote>Οριακό κόστος είναι η μεταβολή του συνολικού κόστους που προκαλείται από τη μεταβολή της παραγωγής κατά μία μονάδα.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 3</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Πόσο μου κοστίζει το «ένα ακόμα» κομμάτι. Επειδή το σταθερό κόστος δεν αλλάζει, το οριακό κόστος το βρίσκεις είτε από το συνολικό είτε από το μεταβλητό κόστος.</p>
+        </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Μέσο και οριακό προϊόν, φθίνουσα απόδοση</summary>
+          <div class="solved-body"><p class="problem">Να υπολογιστούν το μέσο (AP = Q/L) και το οριακό προϊόν (MP = ΔQ/ΔL) και να βρεθεί από πού ισχύει ο νόμος της φθίνουσας απόδοσης.</p><div class="tbl-wrap"><table class="sol-table"><thead><tr><th>L</th><th>Q</th><th>AP</th><th>MP</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>–</td><td>–</td></tr><tr><td>1</td><td>40</td><td>40</td><td>40</td></tr><tr><td>2</td><td>90</td><td>45</td><td>50</td></tr><tr><td>3</td><td>180</td><td>60</td><td>90</td></tr><tr><td>4</td><td>260</td><td>65</td><td>80</td></tr><tr><td>5</td><td>310</td><td>62</td><td>50</td></tr><tr><td>6</td><td>310</td><td>51,7</td><td>0</td></tr><tr><td>7</td><td>290</td><td>41,4</td><td>−20</td></tr><tr><td>8</td><td>260</td><td>32,5</td><td>−30</td></tr></tbody></table></div><ul class="sol-steps"><li>Το MP αρχίζει να μειώνεται <b>μετά τον 3ο εργάτη</b>, άρα από εκεί ισχύει ο νόμος της φθίνουσας απόδοσης. Το AP μειώνεται μετά τον 4ο.</li><li>Το Q γίνεται μέγιστο στον 6ο εργάτη, όπου MP = 0. Μετά μειώνεται, γιατί το MP γίνεται αρνητικό.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 3, Άσκηση 1</p></div>
+        </details>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">AP = Q / L · MP = ΔQ / ΔL<small>μέσο και οριακό προϊόν</small></div>
+          <div class="formula">TC = FC + VC<small>συνολικό κόστος</small></div>
+          <div class="formula">AVC = VC / Q · ATC = TC / Q</div>
+          <div class="formula">MC = ΔVC / ΔQ = ΔTC / ΔQ</div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Η MC τέμνει τις AVC και ATC στα ελάχιστά τους.</li>
+          <li>Όταν το MP αυξάνεται, το MC μειώνεται, και αντίστροφα (MC = w / MP).</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp4" aria-labelledby="bt4" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Νόμος της προσφοράς</h3>
+          <blockquote>Όταν η τιμή ενός αγαθού αυξάνεται, η προσφερόμενη ποσότητα αυξάνεται και, αντίστροφα, όταν η τιμή μειώνεται, η προσφερόμενη ποσότητα μειώνεται, με την προϋπόθεση ότι οι άλλοι προσδιοριστικοί παράγοντες της προσφοράς παραμένουν σταθεροί.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 4</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Όσο πιο ψηλά πληρώνει η αγορά, τόσο περισσότερο αξίζει στον παραγωγό να παράγει. Ίδια λογική με τη ζήτηση, αντίθετη κατεύθυνση.</p>
+        </div>
+        <div class="excerpt"><h3>Βραχυχρόνια καμπύλη προσφοράς της επιχείρησης</h3>
+          <blockquote>Η καμπύλη προσφοράς της επιχείρησης στη βραχυχρόνια περίοδο είναι το ανερχόμενο τμήμα της καμπύλης του οριακού κόστους, που βρίσκεται πάνω από την καμπύλη του μέσου μεταβλητού κόστους.»</blockquote>
+          <p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 4</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Η επιχείρηση παράγει εκεί που P = MC, αρκεί η τιμή να καλύπτει τουλάχιστον το μέσο μεταβλητό κόστος. Αλλιώς τη συμφέρει να σταματήσει την παραγωγή.</p>
+        </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Από το κόστος στην καμπύλη προσφοράς</summary>
+          <div class="solved-body"><p class="problem">Δίνεται το συνολικό κόστος (FC = 60). Να βρεθεί η βραχυχρόνια καμπύλη προσφοράς της επιχείρησης.</p><div class="tbl-wrap"><table class="sol-table"><thead><tr><th>Q</th><th>TC</th><th>VC</th><th>AVC</th><th>MC</th></tr></thead><tbody><tr><td>0</td><td>60</td><td>0</td><td>–</td><td>–</td></tr><tr><td>1</td><td>100</td><td>40</td><td>40</td><td>40</td></tr><tr><td>2</td><td>126</td><td>66</td><td>33</td><td>26</td></tr><tr><td>3</td><td>159</td><td>99</td><td>33</td><td>33</td></tr><tr><td>4</td><td>212</td><td>152</td><td>38</td><td>53</td></tr><tr><td>5</td><td>285</td><td>225</td><td>45</td><td>73</td></tr><tr><td>6</td><td>390</td><td>330</td><td>55</td><td>105</td></tr><tr><td>7</td><td>510</td><td>450</td><td>64,3</td><td>120</td></tr></tbody></table></div><ul class="sol-steps"><li>VC = TC − FC, AVC = VC/Q, MC = ΔVC/ΔQ.</li><li>Η προσφορά αρχίζει εκεί που <b>AVC = MC = 33</b> (Q = 3). Προσφορά: P = 33 → 3, 53 → 4, 73 → 5, 105 → 6, 120 → 7.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 4, Άσκηση 1</p></div>
+        </details>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">E<sub>S</sub> = (ΔQ / ΔP) · (P<sub>1</sub> / Q<sub>1</sub>)<small>ελαστικότητα προσφοράς (θετική)</small></div>
+          <div class="formula">P = MC, με P ≥ min AVC<small>συνθήκη προσφοράς επιχείρησης</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Αύξηση κόστους παραγωγής (π.χ. πρώτων υλών) μετατοπίζει την S προς τα αριστερά.</li>
+          <li>Η αγοραία προσφορά είναι το οριζόντιο άθροισμα των ατομικών προσφορών.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp5" aria-labelledby="bt5" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Τιμή ισορροπίας</h3>
+          <blockquote>Τιμή ισορροπίας είναι η τιμή στην οποία η ζητούμενη ποσότητα ισούται με την προσφερόμενη ποσότητα.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 5</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Είναι η τιμή όπου «όλοι είναι ευχαριστημένοι»: ούτε περισσεύει προϊόν στα ράφια ούτε λείπει. <a href="#ergastirio">Μετακίνησε τις καμπύλες στο εργαστήριο →</a></p>
+        </div>
+        <div class="excerpt"><h3>Ανώτατη τιμή</h3>
+          <blockquote>Το κράτος επιβάλλει ανώτατη τιμή, χαμηλότερη από την τιμή ισορροπίας, με σκοπό την προστασία των καταναλωτών. Στην τιμή αυτή δημιουργείται έλλειμμα, το οποίο μπορεί να οδηγήσει στην εμφάνιση «μαύρης αγοράς».»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 5</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Χαμηλή τιμή με νόμο σημαίνει ότι θέλουν να αγοράσουν περισσότεροι από όσα προσφέρονται. Κάποιοι θα πληρώσουν «κάτω από το τραπέζι».</p>
+        </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Ισορροπία με μη γραμμική ζήτηση</summary>
+          <div class="solved-body"><p class="problem">Δίνονται Q<sub>S</sub> = 50 + P και Q<sub>D</sub> = 3600/P. Να βρεθεί η ισορροπία και αν οι παραγωγοί μπορούν να αυξήσουν τα έσοδά τους αλλάζοντας την τιμή.</p><ul class="sol-steps"><li>Q<sub>D</sub> = Q<sub>S</sub> ⇒ 3600/P = 50 + P ⇒ P² + 50P − 3600 = 0 ⇒ P = 40 (η λύση P = −90 απορρίπτεται).</li><li>Q = 50 + 40 = <b>90</b>, άρα η ισορροπία είναι P* = 40, Q* = 90.</li><li>Η ζήτηση είναι ισοσκελής υπερβολή: P·Q = 3600 σε κάθε τιμή. Η συνολική δαπάνη μένει σταθερή, άρα <b>όχι</b>.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 5, Άσκηση 3</p></div>
+        </details>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">Q<sub>D</sub> = Q<sub>S</sub> ⇒ P*, Q*<small>συνθήκη ισορροπίας</small></div>
+          <div class="formula">Έλλειμμα = Q<sub>D</sub> − Q<sub>S</sub><small>όταν P &lt; P* (ανώτατη τιμή)</small></div>
+          <div class="formula">Πλεόνασμα = Q<sub>S</sub> − Q<sub>D</sub><small>όταν P &gt; P* (κατώτατη τιμή)</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Ανώτατη τιμή φέρνει έλλειμμα, κατώτατη φέρνει πλεόνασμα. Μην τα μπερδέψεις.</li>
+          <li>Αν αυξηθούν ταυτόχρονα D και S, η Q* σίγουρα αυξάνεται. Η P* εξαρτάται από το ποια μετατόπιση είναι μεγαλύτερη.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="methodos">
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow">Η μέθοδος</span><h2>Τέσσερα βήματα μέχρι τις πανελλαδικές</h2></div>
     <div class="steps">
@@ -241,7 +452,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     </div>
   </div>
 </section>
-<section id="paketa">
+<section id="paketa" class="alt">
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow">Πακέτα</span><h2>Διάλεξε τον τρόπο που σου ταιριάζει</h2><p>Οι τιμές είναι ενδεικτικές — επικοινώνησε για το πρόγραμμα και τη διαθεσιμότητα.</p></div>
     <div class="grid-3">
@@ -251,7 +462,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     </div>
   </div>
 </section>
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow">Γνώμες</span><h2>Τι λένε μαθητές &amp; γονείς</h2></div>
     <div class="grid-3">
@@ -297,13 +508,20 @@ footer .brand{justify-content:center;margin-bottom:8px}
 <script>
 /* ΡΥΘΜΙΣΕΙΣ — ΑΛΛΑΞΕ ΕΔΩ */
 const STUDENT_CODE = "AOTH2026";
+const BOOK_STUDENT = "https://ebooks.edu.gr/ebooks/v/pdf/8547/2522/22-0299-01_V1_Arches-Oikonomikis-Theorias_G-Lykeiou-Spoudon-Oikonomias-Pliroforikis_Vivlio-Mathiti/";
+const BOOK_TEACHER = "https://ebooks.edu.gr/ebooks/v/pdf/8547/5164/22-0129-01_Arches-Oikonomikis-Theorias_G-Lykeiou_Vivlio-Ekpaideutikou/";
+/* link: "" = «σύντομα διαθέσιμο», "#..." = σημείο της σελίδας, αλλιώς ανοίγει σε νέα καρτέλα */
 const MATERIALS = [
-  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 1", title:"Σημειώσεις: Βασικές οικονομικές έννοιες", desc:"Θεωρία με παραδείγματα, ΚΠΔ και κόστος ευκαιρίας.", link:"#" },
-  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 2", title:"Φυλλάδιο ασκήσεων: Ελαστικότητες", desc:"20 ασκήσεις κλιμακούμενης δυσκολίας με απαντήσεις.", link:"#" },
-  { date:"Ιούλιος 2026", tag:"ΔΙΑΓΩΝΙΣΜΑ", title:"Προσομοίωση πανελλαδικών Νο 1", desc:"Πλήρες θέμα εξετάσεων με βαθμολογικό οδηγό.", link:"#" }
+  { date:"Επίσημο βιβλίο", tag:"ΒΙΒΛΙΟ ΜΑΘΗΤΗ", title:"Αρχές Οικονομικής Θεωρίας (βιβλίο μαθητή)", desc:"Η βάση της θεωρίας: στις πανελλαδικές οι απαντήσεις βαθμολογούνται με βάση τη διατύπωση του σχολικού βιβλίου.", link:BOOK_STUDENT },
+  { date:"Επίσημο βιβλίο", tag:"ΛΥΣΕΙΣ", title:"Λύσεις ασκήσεων σχολικού βιβλίου", desc:"Για αυτοέλεγχο: λύνεις πρώτα μόνος σου την άσκηση και μετά συγκρίνεις με τη λύση.", link:"" },
+  { date:"Επίσημο βιβλίο", tag:"ΕΚΠΑΙΔΕΥΤΙΚΟΥ", title:"Βιβλίο εκπαιδευτικού", desc:"Για όσους θέλουν κάτι παραπάνω: διευκρινίσεις στη θεωρία και επιπλέον ερωτήσεις.", link:BOOK_TEACHER },
+  { date:"Στη σελίδα", tag:"ΤΥΠΟΛΟΓΙΟ", title:"Ορισμοί, τύποι & παγίδες ανά κεφάλαιο", desc:"Τα κρίσιμα αποσπάσματα, οι τύποι και μία λυμένη άσκηση για κάθε κεφάλαιο.", link:"#vivlio" },
+  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 1", title:"Σημειώσεις: Βασικές οικονομικές έννοιες", desc:"Θεωρία με παραδείγματα, ΚΠΔ και κόστος ευκαιρίας.", link:"" },
+  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 2", title:"Φυλλάδιο ασκήσεων: Ελαστικότητες", desc:"20 ασκήσεις κλιμακούμενης δυσκολίας με απαντήσεις.", link:"" },
+  { date:"Ιούλιος 2026", tag:"ΔΙΑΓΩΝΙΣΜΑ", title:"Προσομοίωση πανελλαδικών Νο 1", desc:"Πλήρες θέμα εξετάσεων με βαθμολογικό οδηγό.", link:"" }
 ];
 const loginCard=document.getElementById('loginCard'),materialsArea=document.getElementById('materialsArea'),materialsGrid=document.getElementById('materialsGrid'),loginError=document.getElementById('loginError'),codeInput=document.getElementById('studentCode');
-function renderMaterials(){materialsGrid.innerHTML="";MATERIALS.forEach(m=>{const c=document.createElement('div');c.className='material-card';c.innerHTML='<span class="m-date">'+m.date+' · '+m.tag+'</span><h4></h4><p></p><a target="_blank" rel="noopener">Άνοιγμα υλικού →</a>';c.querySelector('h4').textContent=m.title;c.querySelector('p').textContent=m.desc;c.querySelector('a').href=m.link;materialsGrid.appendChild(c);});}
+function renderMaterials(){materialsGrid.innerHTML="";MATERIALS.forEach(m=>{const c=document.createElement('div');c.className='material-card';c.innerHTML='<span class="m-date"></span><h4></h4><p></p>';c.querySelector('.m-date').textContent=m.date+' · '+m.tag;c.querySelector('h4').textContent=m.title;c.querySelector('p').textContent=m.desc;let a;if(!m.link||m.link==='#'){a=document.createElement('span');a.className='m-soon';a.textContent='Σύντομα διαθέσιμο';}else{a=document.createElement('a');a.href=m.link;a.textContent=m.link.startsWith('#')?'Δες το στη σελίδα →':'Άνοιγμα υλικού ↗';if(!m.link.startsWith('#')){a.target='_blank';a.rel='noopener';}}c.appendChild(a);materialsGrid.appendChild(c);});}
 function tryLogin(){if(codeInput.value.trim()===STUDENT_CODE){loginCard.classList.add('hidden');materialsArea.classList.remove('hidden');loginError.style.display='none';renderMaterials();}else{loginError.style.display='block';codeInput.value='';codeInput.focus();}}
 document.getElementById('loginBtn').addEventListener('click',tryLogin);
 codeInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin();});
@@ -313,6 +531,15 @@ menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('o
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 const observer=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+/* ΣΧΟΛΙΚΟ ΒΙΒΛΙΟ — καρτέλες κεφαλαίων */
+(function(){
+  const tabs=[...document.querySelectorAll('.book-tab')];
+  function select(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;e.preventDefault();const n=tabs[(i+d+tabs.length)%tabs.length];select(n);n.focus();});
+  });
+})();
 /* CHART 1 — Προσφορά & Ζήτηση */
 (function(){
   const cv=document.getElementById('sdCanvas'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height,PAD=44;
