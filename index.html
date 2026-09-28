@@ -114,6 +114,7 @@ h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.
 .material-card h4{font-family:var(--font-display);font-size:1.05rem}
 .material-card p{color:var(--ink-soft);font-size:.9rem;flex:1}
 .material-card a{font-weight:600;font-size:.92rem}
+.material-card .m-soon{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-soft)}
 .hidden{display:none}
 .book-intro{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin-bottom:26px}
 .book-intro p{color:var(--ink-soft);font-size:.92rem;max-width:44em}
@@ -286,7 +287,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     <!-- Τα αποσπάσματα είναι σύντομα και παρατίθενται για εκπαιδευτικό σκοπό. Έλεγξε τη διατύπωση με την τρέχουσα έκδοση του βιβλίου πριν τη δημοσίευση. -->
     <div class="book-intro reveal">
       <p>📘 «Αρχές Οικονομικής Θεωρίας», Γ' Λυκείου, και το συνοδευτικό βιβλίο «Λύσεις Ασκήσεων» (Λιανός, Παπαβασιλείου, Χατζηανδρέου · ΙΤΥΕ «Διόφαντος»). Σε κάθε κεφάλαιο θα βρεις σύντομα αποσπάσματα και μία λυμένη άσκηση. Διάβαζε πάντα ολόκληρο το κεφάλαιο από το επίσημο βιβλίο.</p>
-      <a class="btn btn-ghost" href="https://ebooks.edu.gr/" target="_blank" rel="noopener">Το βιβλίο στα ψηφιακά σχολικά βιβλία ↗</a>
+      <a class="btn btn-ghost" href="https://ebooks.edu.gr/ebooks/v/pdf/8547/2522/22-0299-01_V1_Arches-Oikonomikis-Theorias_G-Lykeiou-Spoudon-Oikonomias-Pliroforikis_Vivlio-Mathiti/" target="_blank" rel="noopener">Άνοιξε το βιβλίο μαθητή (PDF) ↗</a>
     </div>
     <div class="book-tabs" role="tablist" aria-label="Κεφάλαια σχολικού βιβλίου">
       <button class="book-tab" role="tab" id="bt1" aria-controls="bp1" aria-selected="true">ΚΕΦ. 1 · Βασικές έννοιες</button>
@@ -507,13 +508,20 @@ footer .brand{justify-content:center;margin-bottom:8px}
 <script>
 /* ΡΥΘΜΙΣΕΙΣ — ΑΛΛΑΞΕ ΕΔΩ */
 const STUDENT_CODE = "AOTH2026";
+const BOOK_STUDENT = "https://ebooks.edu.gr/ebooks/v/pdf/8547/2522/22-0299-01_V1_Arches-Oikonomikis-Theorias_G-Lykeiou-Spoudon-Oikonomias-Pliroforikis_Vivlio-Mathiti/";
+const BOOK_TEACHER = "https://ebooks.edu.gr/ebooks/v/pdf/8547/5164/22-0129-01_Arches-Oikonomikis-Theorias_G-Lykeiou_Vivlio-Ekpaideutikou/";
+/* link: "" = «σύντομα διαθέσιμο», "#..." = σημείο της σελίδας, αλλιώς ανοίγει σε νέα καρτέλα */
 const MATERIALS = [
-  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 1", title:"Σημειώσεις: Βασικές οικονομικές έννοιες", desc:"Θεωρία με παραδείγματα, ΚΠΔ και κόστος ευκαιρίας.", link:"#" },
-  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 2", title:"Φυλλάδιο ασκήσεων: Ελαστικότητες", desc:"20 ασκήσεις κλιμακούμενης δυσκολίας με απαντήσεις.", link:"#" },
-  { date:"Ιούλιος 2026", tag:"ΔΙΑΓΩΝΙΣΜΑ", title:"Προσομοίωση πανελλαδικών Νο 1", desc:"Πλήρες θέμα εξετάσεων με βαθμολογικό οδηγό.", link:"#" }
+  { date:"Επίσημο βιβλίο", tag:"ΒΙΒΛΙΟ ΜΑΘΗΤΗ", title:"Αρχές Οικονομικής Θεωρίας (βιβλίο μαθητή)", desc:"Η βάση της θεωρίας: στις πανελλαδικές οι απαντήσεις βαθμολογούνται με βάση τη διατύπωση του σχολικού βιβλίου.", link:BOOK_STUDENT },
+  { date:"Επίσημο βιβλίο", tag:"ΛΥΣΕΙΣ", title:"Λύσεις ασκήσεων σχολικού βιβλίου", desc:"Για αυτοέλεγχο: λύνεις πρώτα μόνος σου την άσκηση και μετά συγκρίνεις με τη λύση.", link:"" },
+  { date:"Επίσημο βιβλίο", tag:"ΕΚΠΑΙΔΕΥΤΙΚΟΥ", title:"Βιβλίο εκπαιδευτικού", desc:"Για όσους θέλουν κάτι παραπάνω: διευκρινίσεις στη θεωρία και επιπλέον ερωτήσεις.", link:BOOK_TEACHER },
+  { date:"Στη σελίδα", tag:"ΤΥΠΟΛΟΓΙΟ", title:"Ορισμοί, τύποι & παγίδες ανά κεφάλαιο", desc:"Τα κρίσιμα αποσπάσματα, οι τύποι και μία λυμένη άσκηση για κάθε κεφάλαιο.", link:"#vivlio" },
+  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 1", title:"Σημειώσεις: Βασικές οικονομικές έννοιες", desc:"Θεωρία με παραδείγματα, ΚΠΔ και κόστος ευκαιρίας.", link:"" },
+  { date:"Ιούλιος 2026", tag:"ΚΕΦ. 2", title:"Φυλλάδιο ασκήσεων: Ελαστικότητες", desc:"20 ασκήσεις κλιμακούμενης δυσκολίας με απαντήσεις.", link:"" },
+  { date:"Ιούλιος 2026", tag:"ΔΙΑΓΩΝΙΣΜΑ", title:"Προσομοίωση πανελλαδικών Νο 1", desc:"Πλήρες θέμα εξετάσεων με βαθμολογικό οδηγό.", link:"" }
 ];
 const loginCard=document.getElementById('loginCard'),materialsArea=document.getElementById('materialsArea'),materialsGrid=document.getElementById('materialsGrid'),loginError=document.getElementById('loginError'),codeInput=document.getElementById('studentCode');
-function renderMaterials(){materialsGrid.innerHTML="";MATERIALS.forEach(m=>{const c=document.createElement('div');c.className='material-card';c.innerHTML='<span class="m-date">'+m.date+' · '+m.tag+'</span><h4></h4><p></p><a target="_blank" rel="noopener">Άνοιγμα υλικού →</a>';c.querySelector('h4').textContent=m.title;c.querySelector('p').textContent=m.desc;c.querySelector('a').href=m.link;materialsGrid.appendChild(c);});}
+function renderMaterials(){materialsGrid.innerHTML="";MATERIALS.forEach(m=>{const c=document.createElement('div');c.className='material-card';c.innerHTML='<span class="m-date"></span><h4></h4><p></p>';c.querySelector('.m-date').textContent=m.date+' · '+m.tag;c.querySelector('h4').textContent=m.title;c.querySelector('p').textContent=m.desc;let a;if(!m.link||m.link==='#'){a=document.createElement('span');a.className='m-soon';a.textContent='Σύντομα διαθέσιμο';}else{a=document.createElement('a');a.href=m.link;a.textContent=m.link.startsWith('#')?'Δες το στη σελίδα →':'Άνοιγμα υλικού ↗';if(!m.link.startsWith('#')){a.target='_blank';a.rel='noopener';}}c.appendChild(a);materialsGrid.appendChild(c);});}
 function tryLogin(){if(codeInput.value.trim()===STUDENT_CODE){loginCard.classList.add('hidden');materialsArea.classList.remove('hidden');loginError.style.display='none';renderMaterials();}else{loginError.style.display='block';codeInput.value='';codeInput.focus();}}
 document.getElementById('loginBtn').addEventListener('click',tryLogin);
 codeInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryLogin();});
