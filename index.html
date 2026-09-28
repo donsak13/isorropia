@@ -114,9 +114,34 @@ h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.
 .material-card p{color:var(--ink-soft);font-size:.9rem;flex:1}
 .material-card a{font-weight:600;font-size:.92rem}
 .hidden{display:none}
+.book-intro{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin-bottom:26px}
+.book-intro p{color:var(--ink-soft);font-size:.92rem;max-width:44em}
+.book-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.book-tab{font-family:var(--font-mono);font-size:.8rem;font-weight:600;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink-soft);cursor:pointer;transition:background .15s ease,color .15s ease}
+.book-tab:hover{border-color:var(--board);color:var(--board)}
+.book-tab[aria-selected="true"]{background:var(--board);border-color:var(--board);color:#fff}
+.book-panel{display:grid;grid-template-columns:1.35fr .65fr;gap:22px;align-items:start}
+.book-panel[hidden]{display:none}
+.book-main,.book-side{display:grid;gap:18px}
+.excerpt{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--board);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+.excerpt h3{font-family:var(--font-display);font-size:1.08rem;margin-bottom:10px}
+.excerpt blockquote{font-family:var(--font-display);font-size:1.04rem;line-height:1.6;color:var(--ink);position:relative;padding-left:26px}
+.excerpt blockquote::before{content:"«";position:absolute;left:0;top:-6px;font-size:2rem;color:var(--board);line-height:1}
+.excerpt .src{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-soft);margin-top:10px}
+.excerpt .simple{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);color:var(--ink-soft);font-size:.95rem}
+.excerpt .simple b{color:var(--board);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;display:block;margin-bottom:4px}
+.side-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.side-box h4{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--board);margin-bottom:12px}
+.formula{font-family:var(--font-mono);font-size:.86rem;background:var(--paper-2);border-radius:8px;padding:9px 12px;margin-bottom:8px}
+.formula small{display:block;font-family:var(--font-body);color:var(--ink-soft);font-size:.78rem;margin-top:2px}
+.side-box.trap{background:#FFF6DD;border-color:#F2D38A}
+.side-box.trap h4{color:#8A5A00}
+.side-box ul{list-style:none;display:grid;gap:10px}
+.side-box li{font-size:.92rem;color:var(--ink);padding-left:22px;position:relative}
+.side-box li::before{content:"!";position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--amber);color:var(--ink);font-family:var(--font-mono);font-size:.7rem;font-weight:700;display:grid;place-items:center}
 footer{padding:34px 20px;text-align:center;color:var(--ink-soft);font-size:.88rem}
 footer .brand{justify-content:center;margin-bottom:8px}
-@media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:44px}.grid-3,.materials-grid,.steps,.lab-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.book-panel{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding-top:44px}.grid-3,.materials-grid,.steps,.lab-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.lab-grid{grid-template-columns:1fr}}
 @media (max-width:620px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;padding:18px 20px;gap:16px;align-items:flex-start}.nav-links.open{display:flex}.menu-toggle{display:block}.grid-3,.materials-grid,.steps{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.curve{animation:none;stroke-dashoffset:0}.guide{animation:none;opacity:1}.eq-dot{animation:none}.reveal{opacity:1;transform:none;transition:none}}
@@ -129,6 +154,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     <button class="menu-toggle" id="menuToggle" aria-label="Μενού" aria-expanded="false">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="#yli">Ύλη</a>
+      <a href="#vivlio">Σχολικό βιβλίο</a>
       <a href="#ergastirio">Εργαστήριο</a>
       <a href="#methodos">Μέθοδος</a>
       <a href="#paketa">Πακέτα</a>
@@ -230,7 +256,156 @@ footer .brand{justify-content:center;margin-bottom:8px}
     </div>
   </div>
 </section>
-<section id="methodos" class="alt">
+<section id="vivlio" class="alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Το σχολικό βιβλίο</span>
+      <h2>Αποσπάσματα από το σχολικό βιβλίο, εξηγημένα απλά</h2>
+      <p>Στις πανελλαδικές η θεωρία βαθμολογείται με βάση το σχολικό βιβλίο. Εδώ θα βρεις τους ορισμούς που «πέφτουν», τι σημαίνουν με απλά λόγια, τους τύπους και τις παγίδες του κάθε κεφαλαίου.</p>
+    </div>
+    <!-- Τα αποσπάσματα είναι σύντομα και παρατίθενται για εκπαιδευτικό σκοπό. Έλεγξε τη διατύπωση με την τρέχουσα έκδοση του βιβλίου πριν τη δημοσίευση. -->
+    <div class="book-intro reveal">
+      <p>📘 Σχολικό εγχειρίδιο «Αρχές Οικονομικής Θεωρίας», Γ' Λυκείου (ΙΤΥΕ «Διόφαντος»). Τα αποσπάσματα είναι σύντομα. Διάβαζε πάντα ολόκληρο το κεφάλαιο από το επίσημο βιβλίο.</p>
+      <a class="btn btn-ghost" href="https://ebooks.edu.gr/" target="_blank" rel="noopener">Το βιβλίο στα ψηφιακά σχολικά βιβλία ↗</a>
+    </div>
+    <div class="book-tabs" role="tablist" aria-label="Κεφάλαια σχολικού βιβλίου">
+      <button class="book-tab" role="tab" id="bt1" aria-controls="bp1" aria-selected="true">ΚΕΦ. 1 · Βασικές έννοιες</button>
+      <button class="book-tab" role="tab" id="bt2" aria-controls="bp2" aria-selected="false" tabindex="-1">ΚΕΦ. 2 · Ζήτηση</button>
+      <button class="book-tab" role="tab" id="bt3" aria-controls="bp3" aria-selected="false" tabindex="-1">ΚΕΦ. 3 · Παραγωγή &amp; κόστος</button>
+      <button class="book-tab" role="tab" id="bt4" aria-controls="bp4" aria-selected="false" tabindex="-1">ΚΕΦ. 4 · Προσφορά</button>
+      <button class="book-tab" role="tab" id="bt5" aria-controls="bp5" aria-selected="false" tabindex="-1">ΚΕΦ. 5 · Τιμές</button>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp1" aria-labelledby="bt1">
+      <div class="book-main">
+        <div class="excerpt"><h3>Καμπύλη παραγωγικών δυνατοτήτων</h3>
+          <blockquote>Η καμπύλη παραγωγικών δυνατοτήτων δείχνει τους μέγιστους δυνατούς συνδυασμούς δύο αγαθών που μπορεί να παραγάγει μια οικονομία, όταν απασχολεί πλήρως και αποδοτικά όλους τους παραγωγικούς της συντελεστές, με δεδομένη την τεχνολογία.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 1</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Σημείο πάνω στην καμπύλη: η οικονομία δουλεύει «στο φουλ». Σημείο μέσα: ανεργία ή σπατάλη πόρων. Σημείο έξω: ανέφικτο, μέχρι να αυξηθούν οι πόροι ή να βελτιωθεί η τεχνολογία.</p>
+        </div>
+        <div class="excerpt"><h3>Κόστος ευκαιρίας</h3>
+          <blockquote>Κόστος ευκαιρίας ή εναλλακτικό κόστος ενός αγαθού είναι η ποσότητα ενός άλλου αγαθού που θυσιάζεται, για να παραχθεί μία επιπλέον μονάδα του πρώτου.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 1</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Αν για 1 επιπλέον τόνο σιτάρι «χάνεις» 3 τόνους βαμβάκι, το κόστος ευκαιρίας του σιταριού είναι 3 τόνοι βαμβάκι. Είναι αυτό που αφήνεις πίσω, όχι τα χρήματα που πληρώνεις.</p>
+        </div>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">ΚΕ<sub>Χ</sub> = |ΔΨ / ΔΧ|<small>κόστος ευκαιρίας του Χ σε μονάδες Ψ</small></div>
+          <div class="formula">ΚΕ<sub>Ψ</sub> = 1 / ΚΕ<sub>Χ</sub><small>το αντίστροφο, για το άλλο αγαθό</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Το κόστος ευκαιρίας μετριέται σε μονάδες του άλλου αγαθού, όχι σε ευρώ.</li>
+          <li>Αυξανόμενο κόστος ευκαιρίας σημαίνει ΚΠΔ κοίλη ως προς την αρχή των αξόνων.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp2" aria-labelledby="bt2" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Νόμος της ζήτησης</h3>
+          <blockquote>Όταν η τιμή ενός αγαθού αυξάνεται, η ζητούμενη ποσότητα μειώνεται και, αντίστροφα, όταν η τιμή μειώνεται, η ζητούμενη ποσότητα αυξάνεται, με την προϋπόθεση ότι οι άλλοι προσδιοριστικοί παράγοντες της ζήτησης παραμένουν σταθεροί.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 2</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Ακριβαίνει κάτι, αγοράζουμε λιγότερο. Το «οι άλλοι παράγοντες σταθεροί» (ceteris paribus) δεν είναι διακοσμητικό: αν το ξεχάσεις στον ορισμό, χάνεις μονάδες.</p>
+        </div>
+        <div class="excerpt"><h3>Ελαστικότητα ζήτησης ως προς την τιμή</h3>
+          <blockquote>Η ελαστικότητα ζήτησης ως προς την τιμή μετρά την ποσοστιαία μεταβολή της ζητούμενης ποσότητας ενός αγαθού, που προκαλείται από μια ποσοστιαία μεταβολή της τιμής του, ενώ οι άλλοι προσδιοριστικοί παράγοντες παραμένουν σταθεροί.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 2</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Πόσο «ευαίσθητος» είναι ο καταναλωτής στην τιμή. |E<sub>D</sub>| &gt; 1: η τιμή πέφτει και η δαπάνη ανεβαίνει. |E<sub>D</sub>| &lt; 1: η τιμή πέφτει και η δαπάνη πέφτει. |E<sub>D</sub>| = 1: η δαπάνη μένει σταθερή. <a href="#ergastirio">Δοκίμασέ το στο εργαστήριο →</a></p>
+        </div>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">E<sub>D</sub> = (ΔQ / ΔP) · (P<sub>1</sub> / Q<sub>1</sub>)<small>ελαστικότητα σε σημείο</small></div>
+          <div class="formula">ΣΔ = P · Q<small>συνολική δαπάνη καταναλωτών</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Αλλάζει η τιμή: κίνηση πάνω στην καμπύλη (μεταβολή ζητούμενης ποσότητας). Αλλάζει εισόδημα, τιμές άλλων αγαθών ή προτιμήσεις: μετατόπιση (μεταβολή ζήτησης).</li>
+          <li>Η E<sub>D</sub> είναι αρνητική. Για συγκρίσεις χρησιμοποίησε την απόλυτη τιμή της.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp3" aria-labelledby="bt3" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Νόμος της φθίνουσας απόδοσης</h3>
+          <blockquote>Αν αυξάνεται η ποσότητα ενός μεταβλητού συντελεστή, ενώ οι ποσότητες των άλλων συντελεστών παραμένουν σταθερές, θα φθάσουμε σε ένα σημείο πέρα από το οποίο το οριακό προϊόν του μεταβλητού συντελεστή θα μειώνεται.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 3</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Μια κουζίνα και όλο και περισσότεροι μάγειρες: στην αρχή κάθε νέος μάγειρας βγάζει πολλά πιάτα, μετά όλο και λιγότερα, γιατί η κουζίνα (ο σταθερός συντελεστής) δεν μεγαλώνει.</p>
+        </div>
+        <div class="excerpt"><h3>Οριακό κόστος</h3>
+          <blockquote>Οριακό κόστος είναι η μεταβολή του συνολικού κόστους που προκαλείται από τη μεταβολή της παραγωγής κατά μία μονάδα.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 3</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Πόσο μου κοστίζει το «ένα ακόμα» κομμάτι. Επειδή το σταθερό κόστος δεν αλλάζει, το οριακό κόστος το βρίσκεις είτε από το συνολικό είτε από το μεταβλητό κόστος.</p>
+        </div>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">AP = Q / L · MP = ΔQ / ΔL<small>μέσο και οριακό προϊόν</small></div>
+          <div class="formula">TC = FC + VC<small>συνολικό κόστος</small></div>
+          <div class="formula">AVC = VC / Q · ATC = TC / Q</div>
+          <div class="formula">MC = ΔVC / ΔQ = ΔTC / ΔQ</div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Η MC τέμνει τις AVC και ATC στα ελάχιστά τους.</li>
+          <li>Όταν το MP αυξάνεται, το MC μειώνεται, και αντίστροφα (MC = w / MP).</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp4" aria-labelledby="bt4" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Νόμος της προσφοράς</h3>
+          <blockquote>Όταν η τιμή ενός αγαθού αυξάνεται, η προσφερόμενη ποσότητα αυξάνεται και, αντίστροφα, όταν η τιμή μειώνεται, η προσφερόμενη ποσότητα μειώνεται, με την προϋπόθεση ότι οι άλλοι προσδιοριστικοί παράγοντες της προσφοράς παραμένουν σταθεροί.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 4</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Όσο πιο ψηλά πληρώνει η αγορά, τόσο περισσότερο αξίζει στον παραγωγό να παράγει. Ίδια λογική με τη ζήτηση, αντίθετη κατεύθυνση.</p>
+        </div>
+        <div class="excerpt"><h3>Βραχυχρόνια καμπύλη προσφοράς της επιχείρησης</h3>
+          <blockquote>Η βραχυχρόνια καμπύλη προσφοράς της επιχείρησης είναι το τμήμα της καμπύλης οριακού κόστους που βρίσκεται πάνω από το ελάχιστο του μέσου μεταβλητού κόστους.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 4</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Η επιχείρηση παράγει εκεί που P = MC, αρκεί η τιμή να καλύπτει τουλάχιστον το μέσο μεταβλητό κόστος. Αλλιώς τη συμφέρει να σταματήσει την παραγωγή.</p>
+        </div>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">E<sub>S</sub> = (ΔQ / ΔP) · (P<sub>1</sub> / Q<sub>1</sub>)<small>ελαστικότητα προσφοράς (θετική)</small></div>
+          <div class="formula">P = MC, με P ≥ min AVC<small>συνθήκη προσφοράς επιχείρησης</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Αύξηση κόστους παραγωγής (π.χ. πρώτων υλών) μετατοπίζει την S προς τα αριστερά.</li>
+          <li>Η αγοραία προσφορά είναι το οριζόντιο άθροισμα των ατομικών προσφορών.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="book-panel" role="tabpanel" id="bp5" aria-labelledby="bt5" hidden>
+      <div class="book-main">
+        <div class="excerpt"><h3>Τιμή ισορροπίας</h3>
+          <blockquote>Τιμή ισορροπίας είναι η τιμή στην οποία η ζητούμενη ποσότητα ισούται με την προσφερόμενη ποσότητα.»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 5</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Είναι η τιμή όπου «όλοι είναι ευχαριστημένοι»: ούτε περισσεύει προϊόν στα ράφια ούτε λείπει. <a href="#ergastirio">Μετακίνησε τις καμπύλες στο εργαστήριο →</a></p>
+        </div>
+        <div class="excerpt"><h3>Ανώτατη τιμή</h3>
+          <blockquote>Το κράτος επιβάλλει ανώτατη τιμή, χαμηλότερη από την τιμή ισορροπίας, με σκοπό την προστασία των καταναλωτών. Στην τιμή αυτή δημιουργείται έλλειμμα, το οποίο μπορεί να οδηγήσει στην εμφάνιση «μαύρης αγοράς».»</blockquote>
+          <p class="src">Σχολικό βιβλίο · Κεφ. 5</p>
+          <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Χαμηλή τιμή με νόμο σημαίνει ότι θέλουν να αγοράσουν περισσότεροι από όσα προσφέρονται. Κάποιοι θα πληρώσουν «κάτω από το τραπέζι».</p>
+        </div>
+      </div>
+      <div class="book-side">
+        <div class="side-box"><h4>Τύποι</h4>
+          <div class="formula">Q<sub>D</sub> = Q<sub>S</sub> ⇒ P*, Q*<small>συνθήκη ισορροπίας</small></div>
+          <div class="formula">Έλλειμμα = Q<sub>D</sub> − Q<sub>S</sub><small>όταν P &lt; P* (ανώτατη τιμή)</small></div>
+          <div class="formula">Πλεόνασμα = Q<sub>S</sub> − Q<sub>D</sub><small>όταν P &gt; P* (κατώτατη τιμή)</small></div>
+        </div>
+        <div class="side-box trap"><h4>Παγίδες εξετάσεων</h4><ul>
+          <li>Ανώτατη τιμή φέρνει έλλειμμα, κατώτατη φέρνει πλεόνασμα. Μην τα μπερδέψεις.</li>
+          <li>Αν αυξηθούν ταυτόχρονα D και S, η Q* σίγουρα αυξάνεται. Η P* εξαρτάται από το ποια μετατόπιση είναι μεγαλύτερη.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="methodos">
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow">Η μέθοδος</span><h2>Τέσσερα βήματα μέχρι τις πανελλαδικές</h2></div>
     <div class="steps">
@@ -241,7 +416,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     </div>
   </div>
 </section>
-<section id="paketa">
+<section id="paketa" class="alt">
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow">Πακέτα</span><h2>Διάλεξε τον τρόπο που σου ταιριάζει</h2><p>Οι τιμές είναι ενδεικτικές — επικοινώνησε για το πρόγραμμα και τη διαθεσιμότητα.</p></div>
     <div class="grid-3">
@@ -251,7 +426,7 @@ footer .brand{justify-content:center;margin-bottom:8px}
     </div>
   </div>
 </section>
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="section-head reveal"><span class="eyebrow">Γνώμες</span><h2>Τι λένε μαθητές &amp; γονείς</h2></div>
     <div class="grid-3">
@@ -313,6 +488,15 @@ menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('o
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 const observer=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+/* ΣΧΟΛΙΚΟ ΒΙΒΛΙΟ — καρτέλες κεφαλαίων */
+(function(){
+  const tabs=[...document.querySelectorAll('.book-tab')];
+  function select(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;e.preventDefault();const n=tabs[(i+d+tabs.length)%tabs.length];select(n);n.focus();});
+  });
+})();
 /* CHART 1 — Προσφορά & Ζήτηση */
 (function(){
   const cv=document.getElementById('sdCanvas'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height,PAD=44;
