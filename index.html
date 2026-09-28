@@ -30,6 +30,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(231,235,236,.92);backdro
 .nav-links{display:flex;gap:22px;margin-left:auto;align-items:center}
 .nav-links a{color:var(--ink-soft);font-weight:500;font-size:.95rem}
 .nav-links a:hover{color:var(--board)}
+.nav-links a.btn-primary{color:#fff}
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-radius:999px;padding:11px 22px;border:2px solid transparent;cursor:pointer;font-size:.95rem;font-family:var(--font-body);transition:transform .15s ease,background .15s ease}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:var(--board);color:#fff}.btn-primary:hover{background:var(--board-dark)}
@@ -122,7 +123,8 @@ h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.
 .book-tab[aria-selected="true"]{background:var(--board);border-color:var(--board);color:#fff}
 .book-panel{display:grid;grid-template-columns:1.35fr .65fr;gap:22px;align-items:start}
 .book-panel[hidden]{display:none}
-.book-main,.book-side{display:grid;gap:18px}
+.book-main,.book-side{display:grid;gap:18px;min-width:0}
+.book-main>*,.book-side>*{min-width:0}
 .excerpt{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--board);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
 .excerpt h3{font-family:var(--font-display);font-size:1.08rem;margin-bottom:10px}
 .excerpt blockquote{font-family:var(--font-display);font-size:1.04rem;line-height:1.6;color:var(--ink);position:relative;padding-left:26px}
@@ -134,6 +136,24 @@ h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.
 .side-box h4{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--board);margin-bottom:12px}
 .formula{font-family:var(--font-mono);font-size:.86rem;background:var(--paper-2);border-radius:8px;padding:9px 12px;margin-bottom:8px}
 .formula small{display:block;font-family:var(--font-body);color:var(--ink-soft);font-size:.78rem;margin-top:2px}
+.solved{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.solved summary{cursor:pointer;padding:18px 22px;font-family:var(--font-display);font-weight:700;font-size:1.02rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;list-style:none}
+.solved summary::-webkit-details-marker{display:none}
+.solved summary::after{content:"+";margin-left:auto;font-family:var(--font-mono);font-size:1.2rem;color:var(--board)}
+.solved[open] summary::after{content:"−"}
+.solved summary .tag{margin-bottom:0}
+.solved-body{padding:0 22px 20px}
+.solved-body .problem{color:var(--ink);font-size:.95rem;margin-bottom:14px}
+.solved-body .src{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-soft);margin-top:12px}
+.tbl-wrap{overflow-x:auto;margin-bottom:12px}
+.sol-table{border-collapse:collapse;font-family:var(--font-mono);font-size:.84rem;min-width:100%}
+.sol-table th,.sol-table td{padding:7px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.sol-table th{background:var(--board-tint);color:var(--board);font-weight:600}
+.sol-table th:first-child,.sol-table td:first-child{text-align:left}
+.sol-steps{list-style:none;display:grid;gap:8px}
+.sol-steps li{font-size:.93rem;color:var(--ink-soft);padding-left:18px;position:relative}
+.sol-steps li::before{content:"→";position:absolute;left:0;color:var(--board)}
+.sol-steps b{color:var(--ink)}
 .side-box.trap{background:#FFF6DD;border-color:#F2D38A}
 .side-box.trap h4{color:#8A5A00}
 .side-box ul{list-style:none;display:grid;gap:10px}
@@ -141,9 +161,9 @@ h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.
 .side-box li::before{content:"!";position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--amber);color:var(--ink);font-family:var(--font-mono);font-size:.7rem;font-weight:700;display:grid;place-items:center}
 footer{padding:34px 20px;text-align:center;color:var(--ink-soft);font-size:.88rem}
 footer .brand{justify-content:center;margin-bottom:8px}
-@media (max-width:900px){.book-panel{grid-template-columns:1fr}.hero{grid-template-columns:1fr;padding-top:44px}.grid-3,.materials-grid,.steps,.lab-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;padding:18px 20px;gap:16px;align-items:flex-start}.nav-links.open{display:flex}.menu-toggle{display:block}.book-panel{grid-template-columns:1fr}.contact-box{grid-template-columns:1fr;padding:36px 28px}.hero{grid-template-columns:1fr;padding-top:44px}.grid-3,.materials-grid,.steps,.lab-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.lab-grid{grid-template-columns:1fr}}
-@media (max-width:620px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;padding:18px 20px;gap:16px;align-items:flex-start}.nav-links.open{display:flex}.menu-toggle{display:block}.grid-3,.materials-grid,.steps{grid-template-columns:1fr}}
+@media (max-width:620px){section{padding:56px 16px}.hero{padding-left:16px;padding-right:16px}.nav{padding:12px 16px}.contact-box{padding:28px 18px;gap:24px}.contact-actions a{padding:12px 14px;word-break:break-word}.book-intro{padding:16px}.book-intro .btn{width:100%;justify-content:center}.excerpt{padding:18px 16px}.solved summary{padding:16px}.solved-body{padding:0 16px 16px}.login-card{padding:26px 20px}.grid-3,.materials-grid,.steps{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.curve{animation:none;stroke-dashoffset:0}.guide{animation:none;opacity:1}.eq-dot{animation:none}.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
@@ -260,12 +280,12 @@ footer .brand{justify-content:center;margin-bottom:8px}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Το σχολικό βιβλίο</span>
-      <h2>Αποσπάσματα από το σχολικό βιβλίο, εξηγημένα απλά</h2>
-      <p>Στις πανελλαδικές η θεωρία βαθμολογείται με βάση το σχολικό βιβλίο. Εδώ θα βρεις τους ορισμούς που «πέφτουν», τι σημαίνουν με απλά λόγια, τους τύπους και τις παγίδες του κάθε κεφαλαίου.</p>
+      <h2>Το σχολικό βιβλίο, εξηγημένο απλά</h2>
+      <p>Στις πανελλαδικές η θεωρία βαθμολογείται με βάση το σχολικό βιβλίο. Εδώ θα βρεις τους ορισμούς που «πέφτουν», τι σημαίνουν με απλά λόγια, τους τύπους, τις παγίδες και λυμένες ασκήσεις του βιβλίου, κεφάλαιο προς κεφάλαιο.</p>
     </div>
     <!-- Τα αποσπάσματα είναι σύντομα και παρατίθενται για εκπαιδευτικό σκοπό. Έλεγξε τη διατύπωση με την τρέχουσα έκδοση του βιβλίου πριν τη δημοσίευση. -->
     <div class="book-intro reveal">
-      <p>📘 Σχολικό εγχειρίδιο «Αρχές Οικονομικής Θεωρίας», Γ' Λυκείου (ΙΤΥΕ «Διόφαντος»). Τα αποσπάσματα είναι σύντομα. Διάβαζε πάντα ολόκληρο το κεφάλαιο από το επίσημο βιβλίο.</p>
+      <p>📘 «Αρχές Οικονομικής Θεωρίας», Γ' Λυκείου, και το συνοδευτικό βιβλίο «Λύσεις Ασκήσεων» (Λιανός, Παπαβασιλείου, Χατζηανδρέου · ΙΤΥΕ «Διόφαντος»). Σε κάθε κεφάλαιο θα βρεις σύντομα αποσπάσματα και μία λυμένη άσκηση. Διάβαζε πάντα ολόκληρο το κεφάλαιο από το επίσημο βιβλίο.</p>
       <a class="btn btn-ghost" href="https://ebooks.edu.gr/" target="_blank" rel="noopener">Το βιβλίο στα ψηφιακά σχολικά βιβλία ↗</a>
     </div>
     <div class="book-tabs" role="tablist" aria-label="Κεφάλαια σχολικού βιβλίου">
@@ -288,6 +308,9 @@ footer .brand{justify-content:center;margin-bottom:8px}
           <p class="src">Σχολικό βιβλίο · Κεφ. 1</p>
           <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Αν για 1 επιπλέον τόνο σιτάρι «χάνεις» 3 τόνους βαμβάκι, το κόστος ευκαιρίας του σιταριού είναι 3 τόνοι βαμβάκι. Είναι αυτό που αφήνεις πίσω, όχι τα χρήματα που πληρώνεις.</p>
         </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Κόστος ευκαιρίας και εφικτοί συνδυασμοί</summary>
+          <div class="solved-body"><p class="problem">Από τον πίνακα παραγωγικών δυνατοτήτων, να βρεθεί το κόστος ευκαιρίας του Χ και να εξεταστούν οι συνδυασμοί (160, 110), (140, 180) και (90, 310).</p><div class="tbl-wrap"><table class="sol-table"><thead><tr><th>Συνδυασμός</th><th>Χ</th><th>Ψ</th><th>ΚΕ<sub>Χ</sub> = ΔΨ/ΔΧ</th></tr></thead><tbody><tr><td>Α</td><td>0</td><td>500</td><td>–</td></tr><tr><td>Β</td><td>100</td><td>300</td><td>200/100 = 2</td></tr><tr><td>Γ</td><td>150</td><td>150</td><td>150/50 = 3</td></tr><tr><td>Δ</td><td>180</td><td>0</td><td>150/30 = 5</td></tr></tbody></table></div><ul class="sol-steps"><li><b>Χ = 160</b> (μεταξύ Γ και Δ, ΚΕ = 5): Ψ = 150 − 5·10 = 100 &lt; 110, άρα ο συνδυασμός είναι <b>ανέφικτος</b>.</li><li><b>Χ = 140</b> (μεταξύ Β και Γ, ΚΕ = 3): Ψ = 300 − 3·40 = 180, άρα ο συνδυασμός είναι <b>άριστος</b> (πάνω στην ΚΠΔ).</li><li><b>Χ = 90</b> (μεταξύ Α και Β, ΚΕ = 2): Ψ = 500 − 2·90 = 320 &gt; 310, άρα ο συνδυασμός είναι <b>εφικτός</b> (κάτω από την ΚΠΔ).</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 1, Άσκηση 11</p></div>
+        </details>
       </div>
       <div class="book-side">
         <div class="side-box"><h4>Τύποι</h4>
@@ -313,6 +336,9 @@ footer .brand{justify-content:center;margin-bottom:8px}
           <p class="src">Σχολικό βιβλίο · Κεφ. 2</p>
           <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Πόσο «ευαίσθητος» είναι ο καταναλωτής στην τιμή. |E<sub>D</sub>| &gt; 1: η τιμή πέφτει και η δαπάνη ανεβαίνει. |E<sub>D</sub>| &lt; 1: η τιμή πέφτει και η δαπάνη πέφτει. |E<sub>D</sub>| = 1: η δαπάνη μένει σταθερή. <a href="#ergastirio">Δοκίμασέ το στο εργαστήριο →</a></p>
         </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Ελαστικότητα από συνάρτηση ζήτησης</summary>
+          <div class="solved-body"><p class="problem">Δίνεται Q<sub>D</sub> = 300 − 2P. Να υπολογιστεί η ελαστικότητα ζήτησης όταν η τιμή αυξάνεται από 50 σε 60.</p><ul class="sol-steps"><li>P<sub>1</sub> = 50 ⇒ Q<sub>1</sub> = 300 − 2·50 = 200</li><li>P<sub>2</sub> = 60 ⇒ Q<sub>2</sub> = 300 − 2·60 = 180</li><li>E<sub>D</sub> = (ΔQ/ΔP)·(P<sub>1</sub>/Q<sub>1</sub>) = (−20/10)·(50/200) = <b>−0,5</b>, άρα ανελαστική ζήτηση.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 2, Άσκηση 7</p></div>
+        </details>
       </div>
       <div class="book-side">
         <div class="side-box"><h4>Τύποι</h4>
@@ -338,6 +364,9 @@ footer .brand{justify-content:center;margin-bottom:8px}
           <p class="src">Σχολικό βιβλίο · Κεφ. 3</p>
           <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Πόσο μου κοστίζει το «ένα ακόμα» κομμάτι. Επειδή το σταθερό κόστος δεν αλλάζει, το οριακό κόστος το βρίσκεις είτε από το συνολικό είτε από το μεταβλητό κόστος.</p>
         </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Μέσο και οριακό προϊόν, φθίνουσα απόδοση</summary>
+          <div class="solved-body"><p class="problem">Να υπολογιστούν το μέσο (AP = Q/L) και το οριακό προϊόν (MP = ΔQ/ΔL) και να βρεθεί από πού ισχύει ο νόμος της φθίνουσας απόδοσης.</p><div class="tbl-wrap"><table class="sol-table"><thead><tr><th>L</th><th>Q</th><th>AP</th><th>MP</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>–</td><td>–</td></tr><tr><td>1</td><td>40</td><td>40</td><td>40</td></tr><tr><td>2</td><td>90</td><td>45</td><td>50</td></tr><tr><td>3</td><td>180</td><td>60</td><td>90</td></tr><tr><td>4</td><td>260</td><td>65</td><td>80</td></tr><tr><td>5</td><td>310</td><td>62</td><td>50</td></tr><tr><td>6</td><td>310</td><td>51,7</td><td>0</td></tr><tr><td>7</td><td>290</td><td>41,4</td><td>−20</td></tr><tr><td>8</td><td>260</td><td>32,5</td><td>−30</td></tr></tbody></table></div><ul class="sol-steps"><li>Το MP αρχίζει να μειώνεται <b>μετά τον 3ο εργάτη</b>, άρα από εκεί ισχύει ο νόμος της φθίνουσας απόδοσης. Το AP μειώνεται μετά τον 4ο.</li><li>Το Q γίνεται μέγιστο στον 6ο εργάτη, όπου MP = 0. Μετά μειώνεται, γιατί το MP γίνεται αρνητικό.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 3, Άσκηση 1</p></div>
+        </details>
       </div>
       <div class="book-side">
         <div class="side-box"><h4>Τύποι</h4>
@@ -361,10 +390,13 @@ footer .brand{justify-content:center;margin-bottom:8px}
           <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Όσο πιο ψηλά πληρώνει η αγορά, τόσο περισσότερο αξίζει στον παραγωγό να παράγει. Ίδια λογική με τη ζήτηση, αντίθετη κατεύθυνση.</p>
         </div>
         <div class="excerpt"><h3>Βραχυχρόνια καμπύλη προσφοράς της επιχείρησης</h3>
-          <blockquote>Η βραχυχρόνια καμπύλη προσφοράς της επιχείρησης είναι το τμήμα της καμπύλης οριακού κόστους που βρίσκεται πάνω από το ελάχιστο του μέσου μεταβλητού κόστους.»</blockquote>
-          <p class="src">Σχολικό βιβλίο · Κεφ. 4</p>
+          <blockquote>Η καμπύλη προσφοράς της επιχείρησης στη βραχυχρόνια περίοδο είναι το ανερχόμενο τμήμα της καμπύλης του οριακού κόστους, που βρίσκεται πάνω από την καμπύλη του μέσου μεταβλητού κόστους.»</blockquote>
+          <p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 4</p>
           <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Η επιχείρηση παράγει εκεί που P = MC, αρκεί η τιμή να καλύπτει τουλάχιστον το μέσο μεταβλητό κόστος. Αλλιώς τη συμφέρει να σταματήσει την παραγωγή.</p>
         </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Από το κόστος στην καμπύλη προσφοράς</summary>
+          <div class="solved-body"><p class="problem">Δίνεται το συνολικό κόστος (FC = 60). Να βρεθεί η βραχυχρόνια καμπύλη προσφοράς της επιχείρησης.</p><div class="tbl-wrap"><table class="sol-table"><thead><tr><th>Q</th><th>TC</th><th>VC</th><th>AVC</th><th>MC</th></tr></thead><tbody><tr><td>0</td><td>60</td><td>0</td><td>–</td><td>–</td></tr><tr><td>1</td><td>100</td><td>40</td><td>40</td><td>40</td></tr><tr><td>2</td><td>126</td><td>66</td><td>33</td><td>26</td></tr><tr><td>3</td><td>159</td><td>99</td><td>33</td><td>33</td></tr><tr><td>4</td><td>212</td><td>152</td><td>38</td><td>53</td></tr><tr><td>5</td><td>285</td><td>225</td><td>45</td><td>73</td></tr><tr><td>6</td><td>390</td><td>330</td><td>55</td><td>105</td></tr><tr><td>7</td><td>510</td><td>450</td><td>64,3</td><td>120</td></tr></tbody></table></div><ul class="sol-steps"><li>VC = TC − FC, AVC = VC/Q, MC = ΔVC/ΔQ.</li><li>Η προσφορά αρχίζει εκεί που <b>AVC = MC = 33</b> (Q = 3). Προσφορά: P = 33 → 3, 53 → 4, 73 → 5, 105 → 6, 120 → 7.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 4, Άσκηση 1</p></div>
+        </details>
       </div>
       <div class="book-side">
         <div class="side-box"><h4>Τύποι</h4>
@@ -390,6 +422,9 @@ footer .brand{justify-content:center;margin-bottom:8px}
           <p class="src">Σχολικό βιβλίο · Κεφ. 5</p>
           <p class="simple"><b>ΜΕ ΑΠΛΑ ΛΟΓΙΑ</b>Χαμηλή τιμή με νόμο σημαίνει ότι θέλουν να αγοράσουν περισσότεροι από όσα προσφέρονται. Κάποιοι θα πληρώσουν «κάτω από το τραπέζι».</p>
         </div>
+        <details class="solved"><summary><span class="tag">ΛΥΜΕΝΗ ΑΣΚΗΣΗ</span>Ισορροπία με μη γραμμική ζήτηση</summary>
+          <div class="solved-body"><p class="problem">Δίνονται Q<sub>S</sub> = 50 + P και Q<sub>D</sub> = 3600/P. Να βρεθεί η ισορροπία και αν οι παραγωγοί μπορούν να αυξήσουν τα έσοδά τους αλλάζοντας την τιμή.</p><ul class="sol-steps"><li>Q<sub>D</sub> = Q<sub>S</sub> ⇒ 3600/P = 50 + P ⇒ P² + 50P − 3600 = 0 ⇒ P = 40 (η λύση P = −90 απορρίπτεται).</li><li>Q = 50 + 40 = <b>90</b>, άρα η ισορροπία είναι P* = 40, Q* = 90.</li><li>Η ζήτηση είναι ισοσκελής υπερβολή: P·Q = 3600 σε κάθε τιμή. Η συνολική δαπάνη μένει σταθερή, άρα <b>όχι</b>.</li></ul><p class="src">Βιβλίο «Λύσεις Ασκήσεων» · Κεφ. 5, Άσκηση 3</p></div>
+        </details>
       </div>
       <div class="book-side">
         <div class="side-box"><h4>Τύποι</h4>
